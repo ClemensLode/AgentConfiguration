@@ -42,7 +42,7 @@
                           <Component id="rewardDistanceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="maxStackSizeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="coveringWildcardProbabilityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="numberOfGArunsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="numberOfExperimentsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lengthOfEachGArunLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="elitistSelectionSizeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="mutationProbabilityEvoAlgLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -51,6 +51,10 @@
                           <Component id="rewardUpdateFactorLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="isTorusCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="sightDistanceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="epsilon0Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="thetaSubsumerLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="numberOfGARunsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="isEventDrivenCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -61,17 +65,20 @@
                               <Component id="maxXTextField" alignment="0" pref="35" max="32767" attributes="1"/>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="epsilon0TextField" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
+                              <Component id="thetaSubsumerTextField" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
                               <Component id="rewardUpdateFactorTextField" alignment="0" max="32767" attributes="1"/>
                               <Component id="crossoverMutationProbabilityTextField" alignment="0" max="32767" attributes="1"/>
                               <Component id="crossoverProbabilityTextField" alignment="0" max="32767" attributes="1"/>
                               <Component id="evolutionaryMutationProbabilityTextField" alignment="0" max="32767" attributes="1"/>
                               <Component id="elitistSelectionSizeTextField" alignment="0" max="32767" attributes="1"/>
                               <Component id="gaRunLengthTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="gaRunsTextField" alignment="0" max="32767" attributes="1"/>
+                              <Component id="numberOfExperimentsTextField" alignment="0" max="32767" attributes="1"/>
                               <Component id="coveringWildcardProbabilityTextField" alignment="0" max="32767" attributes="1"/>
                               <Component id="sightRangeTextField" alignment="0" max="32767" attributes="1"/>
                               <Component id="maxStackSizeTextField" alignment="0" max="32767" attributes="1"/>
                               <Component id="rewardDistanceTextField" alignment="0" pref="34" max="32767" attributes="1"/>
+                              <Component id="numberOfGARunsTextField" alignment="0" max="32767" attributes="1"/>
                           </Group>
                       </Group>
                   </Group>
@@ -100,7 +107,11 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="isTorusCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="isTorusCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="isEventDrivenCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="doEvolutionaryAlgorithmCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -125,8 +136,13 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="numberOfGArunsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="gaRunsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numberOfExperimentsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numberOfExperimentsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="numberOfGARunsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numberOfGARunsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -156,9 +172,24 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="rewardUpdateFactorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rewardUpdateFactorTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rewardUpdateFactorTextField" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="79" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="epsilon0Label" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="thetaSubsumerTextField" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="thetaSubsumerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="epsilon0TextField" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="loadSettingsButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="saveSettingsButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -199,9 +230,9 @@
         <Property name="text" type="java.lang.String" value="Covering Wildcard probability"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="numberOfGArunsLabel">
+    <Component class="javax.swing.JLabel" name="numberOfExperimentsLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Number of GA runs"/>
+        <Property name="text" type="java.lang.String" value="Number of experiments"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lengthOfEachGArunLabel">
@@ -264,9 +295,9 @@
         <Property name="text" type="java.lang.String" value="0.1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="gaRunsTextField">
+    <Component class="javax.swing.JTextField" name="numberOfExperimentsTextField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="500"/>
+        <Property name="text" type="java.lang.String" value="10"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="gaRunLengthTextField">
@@ -334,6 +365,41 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="saveSettingsButtonMouseClicked"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="thetaSubsumerLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Theta Subsumer"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="epsilon0Label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Epsilon 0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="thetaSubsumerTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0.1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="epsilon0TextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0.05"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="numberOfGARunsTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="500"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="numberOfGARunsLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Number of GA runs"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="isEventDrivenCheckBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="is event driven?"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

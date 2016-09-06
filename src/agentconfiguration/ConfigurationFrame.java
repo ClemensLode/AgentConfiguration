@@ -9,8 +9,6 @@ package agentconfiguration;
 import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.io.IOException;
@@ -19,7 +17,7 @@ import javax.swing.*;
 
 /**
  *
- * @author  Clawg
+ * @author Clemens Lode, 1151459, University Karlsruhe (TH)
  */
 
 
@@ -45,8 +43,12 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             f = new FileOutputStream(my_file.getAbsoluteFile());
             p = new PrintStream(f);
 
-            p.println(Integer.valueOf(gaRunsTextField.getText()));
+            p.println(Integer.valueOf(numberOfExperimentsTextField.getText()));
+            p.println(Integer.valueOf(numberOfGARunsTextField.getText()));
             p.println(Integer.valueOf(gaRunLengthTextField.getText()));
+            
+            p.println(isEventDrivenCheckBox.isSelected());
+            
             p.println(Integer.valueOf(maxXTextField.getText()));
             p.println(Integer.valueOf(maxYTextField.getText()));
             
@@ -67,6 +69,9 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             p.println(Double.valueOf(rewardUpdateFactorTextField.getText()));
             p.println(doEvolutionaryAlgorithmCheckBox.isSelected());
             
+            p.println(Double.valueOf(thetaSubsumerTextField.getText()));
+            p.println(Double.valueOf(epsilon0TextField.getText()));
+            
             p.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error writing to file " + my_file.getAbsoluteFile() + " : " + e, "Error writing file", JOptionPane.ERROR_MESSAGE);
@@ -82,8 +87,11 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             try {
                 BufferedReader p = new BufferedReader(new FileReader(my_file.getAbsoluteFile()));
 
-                gaRunsTextField.setText(Integer.valueOf(p.readLine()).toString());
+                numberOfExperimentsTextField.setText(Integer.valueOf(p.readLine()).toString());
+                numberOfGARunsTextField.setText(Integer.valueOf(p.readLine()).toString());
                 gaRunLengthTextField.setText(Integer.valueOf(p.readLine()).toString());
+                
+                isEventDrivenCheckBox.setSelected(Boolean.valueOf(p.readLine()));
                 
                 maxXTextField.setText(Integer.valueOf(p.readLine()).toString());
                 maxYTextField.setText(Integer.valueOf(p.readLine()).toString());
@@ -104,6 +112,9 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 evolutionaryMutationProbabilityTextField.setText(Double.valueOf(p.readLine()).toString());
                 rewardUpdateFactorTextField.setText(Double.valueOf(p.readLine()).toString());
                 doEvolutionaryAlgorithmCheckBox.setSelected(Boolean.valueOf(p.readLine()));
+
+                thetaSubsumerTextField.setText(Double.valueOf(p.readLine()).toString());
+                epsilon0TextField.setText(Double.valueOf(p.readLine()).toString());
                 
                 p.close();
             } catch (IOException e) {
@@ -132,7 +143,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         rewardDistanceLabel = new javax.swing.JLabel();
         maxStackSizeLabel = new javax.swing.JLabel();
         coveringWildcardProbabilityLabel = new javax.swing.JLabel();
-        numberOfGArunsLabel = new javax.swing.JLabel();
+        numberOfExperimentsLabel = new javax.swing.JLabel();
         lengthOfEachGArunLabel = new javax.swing.JLabel();
         elitistSelectionSizeLabel = new javax.swing.JLabel();
         mutationProbabilityEvoAlgLabel = new javax.swing.JLabel();
@@ -145,7 +156,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         rewardDistanceTextField = new javax.swing.JTextField();
         maxStackSizeTextField = new javax.swing.JTextField();
         coveringWildcardProbabilityTextField = new javax.swing.JTextField();
-        gaRunsTextField = new javax.swing.JTextField();
+        numberOfExperimentsTextField = new javax.swing.JTextField();
         gaRunLengthTextField = new javax.swing.JTextField();
         elitistSelectionSizeTextField = new javax.swing.JTextField();
         evolutionaryMutationProbabilityTextField = new javax.swing.JTextField();
@@ -158,6 +169,13 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         doEvolutionaryAlgorithmCheckBox = new javax.swing.JCheckBox();
         loadSettingsButton = new javax.swing.JButton();
         saveSettingsButton = new javax.swing.JButton();
+        thetaSubsumerLabel = new javax.swing.JLabel();
+        epsilon0Label = new javax.swing.JLabel();
+        thetaSubsumerTextField = new javax.swing.JTextField();
+        epsilon0TextField = new javax.swing.JTextField();
+        numberOfGARunsTextField = new javax.swing.JTextField();
+        numberOfGARunsLabel = new javax.swing.JLabel();
+        isEventDrivenCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Configuration File Editor");
@@ -174,7 +192,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
 
         coveringWildcardProbabilityLabel.setText("Covering Wildcard probability");
 
-        numberOfGArunsLabel.setText("Number of GA runs");
+        numberOfExperimentsLabel.setText("Number of experiments");
 
         lengthOfEachGArunLabel.setText("Length of each GA run");
 
@@ -200,7 +218,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
 
         coveringWildcardProbabilityTextField.setText("0.1");
 
-        gaRunsTextField.setText("500");
+        numberOfExperimentsTextField.setText("10");
 
         gaRunLengthTextField.setText("20");
 
@@ -236,6 +254,20 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             }
         });
 
+        thetaSubsumerLabel.setText("Theta Subsumer");
+
+        epsilon0Label.setText("Epsilon 0");
+
+        thetaSubsumerTextField.setText("0.1");
+
+        epsilon0TextField.setText("0.05");
+
+        numberOfGARunsTextField.setText("500");
+
+        numberOfGARunsLabel.setText("Number of GA runs");
+
+        isEventDrivenCheckBox.setText("is event driven?");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -255,7 +287,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                             .addComponent(rewardDistanceLabel)
                             .addComponent(maxStackSizeLabel)
                             .addComponent(coveringWildcardProbabilityLabel)
-                            .addComponent(numberOfGArunsLabel)
+                            .addComponent(numberOfExperimentsLabel)
                             .addComponent(lengthOfEachGArunLabel)
                             .addComponent(elitistSelectionSizeLabel)
                             .addComponent(mutationProbabilityEvoAlgLabel)
@@ -263,7 +295,11 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                             .addComponent(crossoverMutationProbabilityLabel)
                             .addComponent(rewardUpdateFactorLabel)
                             .addComponent(isTorusCheckBox)
-                            .addComponent(sightDistanceLabel))
+                            .addComponent(sightDistanceLabel)
+                            .addComponent(epsilon0Label)
+                            .addComponent(thetaSubsumerLabel)
+                            .addComponent(numberOfGARunsLabel)
+                            .addComponent(isEventDrivenCheckBox))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(doEvolutionaryAlgorithmCheckBox)
@@ -272,17 +308,20 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                                 .addComponent(maxYTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(maxXTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(epsilon0TextField, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+                                .addComponent(thetaSubsumerTextField, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
                                 .addComponent(rewardUpdateFactorTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(crossoverMutationProbabilityTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(crossoverProbabilityTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(evolutionaryMutationProbabilityTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(elitistSelectionSizeTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(gaRunLengthTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(gaRunsTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(numberOfExperimentsTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(coveringWildcardProbabilityTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(sightRangeTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(maxStackSizeTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(rewardDistanceTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)))))
+                                .addComponent(rewardDistanceTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                                .addComponent(numberOfGARunsTextField, javax.swing.GroupLayout.Alignment.LEADING)))))
                 .addContainerGap(274, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -302,7 +341,10 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                     .addComponent(maxAgentsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(isTorusCheckBox)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(isTorusCheckBox)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(isEventDrivenCheckBox))
                     .addComponent(doEvolutionaryAlgorithmCheckBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -322,8 +364,12 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                     .addComponent(coveringWildcardProbabilityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numberOfGArunsLabel)
-                    .addComponent(gaRunsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numberOfExperimentsLabel)
+                    .addComponent(numberOfExperimentsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numberOfGARunsLabel)
+                    .addComponent(numberOfGARunsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lengthOfEachGArunLabel)
@@ -348,12 +394,25 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rewardUpdateFactorLabel)
                     .addComponent(rewardUpdateFactorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(epsilon0Label))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(thetaSubsumerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(thetaSubsumerLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(epsilon0TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loadSettingsButton)
                     .addComponent(saveSettingsButton))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {rewardUpdateFactorTextField, thetaSubsumerTextField});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -404,10 +463,12 @@ public class ConfigurationFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox doEvolutionaryAlgorithmCheckBox;
     private javax.swing.JLabel elitistSelectionSizeLabel;
     private javax.swing.JTextField elitistSelectionSizeTextField;
+    private javax.swing.JLabel epsilon0Label;
+    private javax.swing.JTextField epsilon0TextField;
     private javax.swing.JTextField evolutionaryMutationProbabilityTextField;
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JTextField gaRunLengthTextField;
-    private javax.swing.JTextField gaRunsTextField;
+    private javax.swing.JCheckBox isEventDrivenCheckBox;
     private javax.swing.JCheckBox isTorusCheckBox;
     private javax.swing.JLabel lengthOfEachGArunLabel;
     private javax.swing.JButton loadSettingsButton;
@@ -419,7 +480,10 @@ public class ConfigurationFrame extends javax.swing.JFrame {
     private javax.swing.JLabel maxYLabel;
     private javax.swing.JTextField maxYTextField;
     private javax.swing.JLabel mutationProbabilityEvoAlgLabel;
-    private javax.swing.JLabel numberOfGArunsLabel;
+    private javax.swing.JLabel numberOfExperimentsLabel;
+    private javax.swing.JTextField numberOfExperimentsTextField;
+    private javax.swing.JLabel numberOfGARunsLabel;
+    private javax.swing.JTextField numberOfGARunsTextField;
     private javax.swing.JLabel rewardDistanceLabel;
     private javax.swing.JTextField rewardDistanceTextField;
     private javax.swing.JLabel rewardUpdateFactorLabel;
@@ -427,6 +491,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
     private javax.swing.JButton saveSettingsButton;
     private javax.swing.JLabel sightDistanceLabel;
     private javax.swing.JTextField sightRangeTextField;
+    private javax.swing.JLabel thetaSubsumerLabel;
+    private javax.swing.JTextField thetaSubsumerTextField;
     // End of variables declaration//GEN-END:variables
     
 }
