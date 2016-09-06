@@ -23,8 +23,10 @@ public class ResultsTable extends AbstractTableModel
             "Spread agent distance",
             "Average agent distance",
             "Spread goal distance",
-            "Average goal distance", 
+            "Average goal distance",
+            "Average prediction error",
             "Covered area",
+            "Wasted coverage",
             "Half goal percentage",
             "Goal percentage"
         }; 
