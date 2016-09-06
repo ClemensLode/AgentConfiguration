@@ -34,7 +34,6 @@ class ImageRenderComponent extends JPanel {
         //((Graphics2D)g).setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
         g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
     }
-// TODO update when size has changed?
 
     @Override
     public Dimension getPreferredSize() {

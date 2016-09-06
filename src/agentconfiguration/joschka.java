@@ -50,7 +50,7 @@ public static void copy(File source, File dest) throws IOException {
     /**
      * @param args the command line arguments
      */
-    public static void run() {
+    public static String run() throws Exception {
         File dir = new File(".");
         
         FileFilter plotFileFilter = new FileFilter() {
@@ -118,15 +118,13 @@ public static void copy(File source, File dest) throws IOException {
         for(String config_file : open_calculations) {
             File f = new File(config_file);
             if(!f.renameTo(new File(outputDirectory + "\\" + config_file))) {
-                System.out.println("Could not move config file to work directory.");
-                return;
+                throw new Exception("Could not move config file to work directory.");
             }
         }
         
         for(File plot_file : all_plot_files) {
             if(!plot_file.renameTo(new File(outputDirectory + "\\" + plot_file))) {
-                System.out.println("Could not move plot file to work directory.");
-                return;                
+                throw new Exception("Could not move plot file to work directory.");
             }
         }
         
@@ -137,7 +135,7 @@ public static void copy(File source, File dest) throws IOException {
         try {
             copy(j, dj);
         } catch(IOException e) {
-            System.out.println("Error copying agentsimulator.jar file");
+            throw new Exception("Error copying agentsimulator.jar file");
         }
         
         
@@ -147,26 +145,25 @@ public static void copy(File source, File dest) throws IOException {
             joschka_file.createNewFile();
             batch_file.createNewFile();
         } catch (Exception e) {
-            System.out.println("Error opening file " + joschka_file.getAbsoluteFile());
-            return;
+            throw new Exception("Error opening file " + joschka_file.getAbsoluteFile());
         }
         FileOutputStream f_joschka;
         PrintStream p_joschka;
         FileOutputStream f_batch;
         PrintStream p_batch;
-        try {
+
             f_joschka = new FileOutputStream(joschka_file.getAbsoluteFile());
             p_joschka = new PrintStream(f_joschka);
             f_batch = new FileOutputStream(batch_file.getAbsoluteFile());
             p_batch = new PrintStream(f_batch);
-            String batch_entry = new String("java -jar agentsimulator.jar");            
+            String batch_entry = new String("java -jar -Xmx512m -Xss64m agentsimulator.jar");
 
             int index = 1;
             for(String config_file : open_calculations) {
                 String entry = new String("");
                 entry += "cllo_" + outputDirectory + "\t";
                 entry += "J\t";
-                entry += "java -jar agentsimulator.jar " + config_file + "\t";
+                entry += "java -jar -Xmx512m -Xss64m agentsimulator.jar " + config_file + "\t";
                 entry += "*\t";
                 entry += "NO\t";
                 entry += "agentsimulator.jar;" + config_file + "\t\t\t";
@@ -184,10 +181,8 @@ public static void copy(File source, File dest) throws IOException {
             p_batch.print(batch_entry);
             p_joschka.close();
             p_batch.close();
-        } catch(Exception e) {
-            System.out.println("Error writing to file " + joschka_file.getAbsoluteFile());
-        }     
-        
+
+        return new_date;
     }
 
 }

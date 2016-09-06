@@ -5,6 +5,7 @@ package agentconfiguration;
  * @author Clemens Lode, 1151459, University Karlsruhe (TH), clemens@lode.de
  */
 
+
 import javax.swing.table.AbstractTableModel;
 import java.util.Vector;
 import java.math.BigInteger;
@@ -15,7 +16,8 @@ public class ResultsTable extends AbstractTableModel
      * einen String, für restliche Unterschiede
      */
     public final static String[] columnNames = {
-            "Configuration name", 
+            "Configuration name",
+            "Configuration ID",
             "Spread points", 
             "Average points",
             "Spread agent distance",
@@ -23,6 +25,7 @@ public class ResultsTable extends AbstractTableModel
             "Spread goal distance",
             "Average goal distance", 
             "Covered area",
+            "Half goal percentage",
             "Goal percentage"
         }; 
     public final static int COLUMN_COUNT = columnNames.length;
