@@ -18,7 +18,7 @@ import java.nio.MappedByteBuffer;
 
 /**
  *
- * @author Clemens Lode, 1151459, University Karlsruhe (TH)
+ * @author Clemens Lode, clemens at lode.de, University Karlsruhe (TH)
  */
 public class joschka {
 /*

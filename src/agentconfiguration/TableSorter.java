@@ -2,7 +2,7 @@ package agentconfiguration;
 
 /**
  *
- * @author Clemens Lode, 1151459, University Karlsruhe (TH), clemens@lode.de
+ * @author Clemens Lode, clemens at lode.de, University Karlsruhe (TH), clemens@lode.de
  */
 
 import java.awt.Component;

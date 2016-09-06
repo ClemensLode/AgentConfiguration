@@ -41,48 +41,60 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="problemDefinitionPanel" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="logOutputCheckBox" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="createAnimatedGIFCheckBox" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="problemDefinitionPanel" min="-2" max="-2" attributes="1"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="logOutputCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="createAnimatedGIFCheckBox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <Component id="jPanel1" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="1">
+                              <Component id="saveSpeedButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="saveAllRandomButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="saveAllExplorationButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="1">
+                              <Component id="saveNewButton" min="-2" pref="65" max="-2" attributes="1"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="packageButton" min="-2" max="-2" attributes="1"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="runLastBatchButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="saveAllStackButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="saveAllPopulationButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="saveStepsButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="0" attributes="1">
-                          <Component id="saveSpeedButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="saveAllRandomButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="saveAllExplorationButton" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="saveNewButton" min="-2" pref="65" max="-2" attributes="1"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="packageButton" min="-2" max="-2" attributes="1"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="runLastBatchButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="updateDatabaseButton" min="-2" pref="95" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="saveAllStackButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="saveAllPopulationButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="lcsParametersPanel" min="-2" pref="226" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="1">
+                      <Component id="savePredictionDiscountButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="saveStepsButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="deleteButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="saveLearningButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="saveTournamentButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="saveRandomButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="updateDatabaseButton" min="-2" pref="95" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="lcsParametersPanel" min="-2" pref="226" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="resultsScrollPane" min="-2" pref="835" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -96,40 +108,48 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="problemDefinitionPanel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="problemDefinitionPanel" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="1">
+                                      <Component id="jPanel1" min="-2" pref="585" max="-2" attributes="1"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="logOutputCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="createAnimatedGIFCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="saveNewButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="packageButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="runLastBatchButton" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Component id="updateDatabaseButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jPanel1" min="-2" max="-2" attributes="1"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="createAnimatedGIFCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="logOutputCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="saveSpeedButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="saveAllRandomButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="saveAllExplorationButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="saveAllStackButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="saveAllPopulationButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="saveStepsButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="lcsParametersPanel" min="-2" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="saveSpeedButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="saveAllRandomButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="saveAllExplorationButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="saveAllStackButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="saveAllPopulationButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="saveStepsButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="deleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="savePredictionDiscountButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="saveLearningButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="saveTournamentButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="saveRandomButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="updateDatabaseButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="resultsScrollPane" alignment="0" pref="714" max="32767" attributes="1"/>
-                  <Component id="lcsParametersPanel" alignment="0" min="-2" max="-2" attributes="1"/>
+                  <Component id="resultsScrollPane" alignment="0" pref="732" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -1324,14 +1344,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="runLastBatchButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="deleteButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Delete"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="saveAllRandomButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save random"/>
@@ -1378,12 +1390,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="agentTypePanel" alignment="0" max="32767" attributes="1"/>
-                      <Component id="rewardModelPanel" alignment="0" min="-2" max="-2" attributes="1"/>
-                      <Component id="explorationModePanel" alignment="0" max="32767" attributes="1"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="explorationModePanel" alignment="0" pref="170" max="32767" attributes="1"/>
                       <Component id="communicationPanel" alignment="0" max="32767" attributes="1"/>
+                      <Component id="agentTypePanel" alignment="0" max="32767" attributes="1"/>
+                      <Component id="rewardModelPanel" alignment="0" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -1399,6 +1411,7 @@
                   <Component id="explorationModePanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="communicationPanel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1427,7 +1440,7 @@
                           <Component id="DSXCSAgentRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="XCSAgentRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1564,7 +1577,7 @@
                           <Component id="useMaxPredictionCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="useQuadraticRewardCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <EmptySpace pref="15" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1637,7 +1650,7 @@
                           <Component id="rewardAllEquallyRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="rewardEgoisticRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1715,7 +1728,7 @@
                           <Component id="alwaysExploreRandomModeRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="alwaysExploitBestModeRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="9" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1773,9 +1786,6 @@
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Switch (exploit)"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="switchExploitModeRadioButtonActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="randomExploreExploitModeRadioButton">
               <Properties>
@@ -1809,9 +1819,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Always explore (random)"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alwaysExploreRandomModeRadioButtonActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="alwaysExploitBestModeRadioButton">
               <Properties>
@@ -1852,6 +1859,38 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveStepsButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="saveTournamentButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Save tournament"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveTournamentButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="saveRandomButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Save random"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveRandomButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="saveLearningButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Save learning"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveLearningButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="savePredictionDiscountButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Save pred discount"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="savePredictionDiscountButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
