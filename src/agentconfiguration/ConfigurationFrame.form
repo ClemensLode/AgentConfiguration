@@ -40,66 +40,102 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="problemDefinitionPanel" min="-2" pref="174" max="-2" attributes="1"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="problemDefinitionPanel" min="-2" pref="177" max="-2" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lcsParametersPanel" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                              <Component id="createAnimatedGIFCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="saveNewButton" min="-2" pref="65" max="-2" attributes="1"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="packageButton" min="-2" max="-2" attributes="1"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="runLastBatchButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="updateDatabaseButton" min="-2" pref="67" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jPanel1" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="logOutputCheckBox" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lcsParametersPanel" min="-2" pref="226" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="saveNewButton" min="-2" pref="65" max="-2" attributes="1"/>
+                  <Group type="102" attributes="0">
+                      <Component id="saveSpeedButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="packageButton" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="runLastBatchButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="updateDatabaseButton" min="-2" pref="67" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="deleteButton" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <Component id="saveAllRandomButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="saveAllExplorationButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="saveAllStackButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="saveAllPopulationButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="deleteButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="saveStepsButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="490" pref="490" max="490" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="45" max="32767" attributes="0"/>
-              <Component id="resultsScrollPane" min="-2" pref="801" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="resultsScrollPane" min="-2" pref="835" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="problemDefinitionPanel" alignment="0" min="-2" pref="753" max="-2" attributes="0"/>
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="lcsParametersPanel" min="0" pref="673" max="32767" attributes="1"/>
-                  <Component id="jPanel1" alignment="0" pref="673" max="32767" attributes="1"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="problemDefinitionPanel" alignment="0" min="-2" pref="693" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jPanel1" min="-2" max="-2" attributes="1"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="logOutputCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="createAnimatedGIFCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="saveNewButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="packageButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="runLastBatchButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="updateDatabaseButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="lcsParametersPanel" alignment="0" min="-2" pref="703" max="-2" attributes="1"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="saveSpeedButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="saveStepsButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="deleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="saveAllPopulationButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="saveAllStackButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="saveAllExplorationButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="saveAllRandomButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Component id="resultsScrollPane" alignment="0" pref="761" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="packageButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="saveNewButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="runLastBatchButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="updateDatabaseButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="deleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="saveAllRandomButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="saveAllExplorationButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="saveAllStackButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="saveAllPopulationButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
           </Group>
-          <Component id="resultsScrollPane" alignment="0" min="-2" pref="732" max="-2" attributes="1"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -131,9 +167,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="testsPanel" alignment="0" min="-2" pref="159" max="-2" attributes="1"/>
-                      <Component id="gridPanel" alignment="0" min="0" pref="161" max="32767" attributes="1"/>
-                      <Component id="goalAgentMovementPanel" alignment="0" min="-2" max="-2" attributes="1"/>
+                      <Component id="gridPanel" alignment="0" max="32767" attributes="1"/>
+                      <Component id="testsPanel" alignment="0" min="-2" max="-2" attributes="1"/>
+                      <Component id="goalAgentMovementPanel" alignment="0" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -144,10 +180,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="testsPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                  <Component id="gridPanel" min="-2" pref="285" max="-2" attributes="0"/>
+                  <Component id="gridPanel" min="-2" pref="218" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="goalAgentMovementPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -169,13 +205,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="crossScenarioRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="roomScenarioRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="difficultScenarioRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="randomScenarioRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="mazeScenarioRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="nonTorusScenarioRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="pillarScenarioRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="obstaclePercentageLabel" min="-2" max="-2" attributes="0"/>
@@ -206,6 +237,7 @@
                                   <Component id="sightRangeTextField" alignment="0" pref="30" max="32767" attributes="1"/>
                               </Group>
                           </Group>
+                          <Component id="pillarScenarioRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -242,16 +274,8 @@
                           <Component id="obstacleConnectionFactorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="mazeScenarioRadioButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nonTorusScenarioRadioButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="pillarScenarioRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="crossScenarioRadioButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="roomScenarioRadioButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="difficultScenarioRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                   </Group>
@@ -340,28 +364,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pillarScenarioRadioButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="crossScenarioRadioButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="scenarioTypeButtonGroup"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Cross scenario"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crossScenarioRadioButtonActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="roomScenarioRadioButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="scenarioTypeButtonGroup"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Room scenario"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roomScenarioRadioButtonActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JRadioButton" name="difficultScenarioRadioButton">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
@@ -369,25 +371,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Difficult scenario"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="nonTorusScenarioRadioButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="scenarioTypeButtonGroup"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Non-Torus"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="mazeScenarioRadioButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="scenarioTypeButtonGroup"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Maze scenario"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mazeScenarioRadioButtonActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="sightRangeTextField">
               <Properties>
@@ -420,7 +403,6 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="createAnimatedGIFCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="agentCountLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -434,16 +416,17 @@
                                   <Component id="stepsLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="numberOfStepsTextField" linkSize="3" min="-2" pref="40" max="-2" attributes="1"/>
-                                  <Component id="numberOfProblemsTextField" linkSize="3" min="-2" pref="40" max="-2" attributes="1"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="randomSeedTextField" linkSize="3" min="-2" pref="40" max="-2" attributes="1"/>
-                                      <Component id="numberOfExperimentsTextField" linkSize="3" min="-2" pref="40" max="-2" attributes="1"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="numberOfProblemsTextField" linkSize="3" min="-2" pref="40" max="-2" attributes="1"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Component id="randomSeedTextField" linkSize="3" min="-2" pref="40" max="-2" attributes="1"/>
+                                          <Component id="numberOfExperimentsTextField" linkSize="3" min="-2" pref="40" max="-2" attributes="1"/>
+                                      </Group>
                                   </Group>
+                                  <Component id="numberOfStepsTextField" linkSize="3" alignment="1" min="-2" pref="40" max="-2" attributes="1"/>
                               </Group>
                           </Group>
-                          <Component id="logOutputCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -476,10 +459,7 @@
                           <Component id="agentCountLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="maxAgentsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="createAnimatedGIFCheckBox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="logOutputCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -550,16 +530,6 @@
                 <Property name="text" type="java.lang.String" value="Problems"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="createAnimatedGIFCheckBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Create animated GIF"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="logOutputCheckBox">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Log output"/>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="goalAgentMovementPanel">
@@ -576,21 +546,28 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="intelligentHideGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
                   <Component id="totalRandomGoalAgentMovementRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="randomGoalAgentMovementRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="maxOneDirectionChangeGoalAgentMovementRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="alwaysInTheSameDirectionGoalAgentMovementRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="intelligentOpenGoalAgentMovementRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="intelligentGoalAgentMovementRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="goalAgentMovementSpeedLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <EmptySpace pref="46" max="32767" attributes="0"/>
                       <Component id="goalAgentMovementSpeedTextField" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="LCSGoalAgentMovementRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="randomHideGoalAgentMovementRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="maxOneDirectionChangeGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="alwaysInTheSameDirectionGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="LCSGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -600,15 +577,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="randomGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="intelligentOpenGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="intelligentHideGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="maxOneDirectionChangeGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="alwaysInTheSameDirectionGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="intelligentGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="randomHideGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="alwaysInTheSameDirectionGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="LCSGoalAgentMovementRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -651,7 +624,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
-                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="One direction change"/>
               </Properties>
             </Component>
@@ -676,10 +648,10 @@
             </Component>
             <Component class="javax.swing.JTextField" name="goalAgentMovementSpeedTextField">
               <Properties>
-                <Property name="text" type="java.lang.String" value="2"/>
+                <Property name="text" type="java.lang.String" value="1.5"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="intelligentHideGoalAgentMovementRadioButton">
+            <Component class="javax.swing.JRadioButton" name="intelligentGoalAgentMovementRadioButton">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="goalAgentMovementButtonGroup"/>
@@ -687,20 +659,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Intelligent (hide)"/>
-                <Property name="toolTipText" type="java.lang.String" value="Move away from other agents, tend to move towards walls"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="intelligentOpenGoalAgentMovementRadioButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="goalAgentMovementButtonGroup"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Intelligent (open)"/>
-                <Property name="toolTipText" type="java.lang.String" value="Move away from other agents, tend to move away from walls"/>
+                <Property name="text" type="java.lang.String" value="Intelligent"/>
+                <Property name="toolTipText" type="java.lang.String" value="Move away from other agents"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="LCSGoalAgentMovementRadioButton">
@@ -711,19 +671,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="LCS"/>
+                <Property name="text" type="java.lang.String" value="SXCS"/>
                 <Property name="toolTipText" type="java.lang.String" value="Reward by agents out of sight"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="randomHideGoalAgentMovementRadioButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="goalAgentMovementButtonGroup"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Random (Hide)"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -746,23 +695,22 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="classifierSubsumptionAndDeletionPanel" alignment="0" pref="240" max="32767" attributes="1"/>
-                      <Component id="gaParametersPanel" alignment="0" max="32767" attributes="1"/>
-                      <Component id="fitnessAndPredictionPanel" alignment="0" min="-2" max="-2" attributes="1"/>
+                      <Component id="fitnessAndPredictionPanel" alignment="0" max="32767" attributes="1"/>
+                      <Component id="gaParametersPanel" alignment="0" min="0" pref="213" max="32767" attributes="1"/>
+                      <Component id="classifierSubsumptionAndDeletionPanel" alignment="0" max="32767" attributes="1"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Component id="classifierSubsumptionAndDeletionPanel" min="-2" max="-2" attributes="0"/>
+                  <Component id="classifierSubsumptionAndDeletionPanel" min="-2" pref="224" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="gaParametersPanel" min="-2" pref="181" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="fitnessAndPredictionPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="fitnessAndPredictionPanel" pref="261" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -791,7 +739,7 @@
                           <Component id="fitnessReductionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="predictionErrorReductionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace pref="4" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="fitnessReductionTextField" alignment="1" min="-2" pref="40" max="-2" attributes="1"/>
                           <Component id="predictionErrorReductionTextField" alignment="1" min="-2" pref="40" max="-2" attributes="1"/>
@@ -935,13 +883,13 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="predictionErrorInitializationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="predictionInitializationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="fitnessInitializationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="alphaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="betaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="gammaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="nuLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="epsilon0Label" min="-2" max="-2" attributes="0"/>
+                          <Component id="fitnessInitializationLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="predictionInitializationLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -955,18 +903,17 @@
                               </Group>
                           </Group>
                           <Component id="epsilon0TextField" min="-2" pref="40" max="-2" attributes="1"/>
-                          <Component id="fitnessInitializationTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
-                          <Component id="predictionInitializationTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
                           <Component id="predictionErrorInitializationTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
+                          <Component id="fitnessInitializationTextField" min="-2" pref="40" max="-2" attributes="1"/>
+                          <Component id="predictionInitializationTextField" min="-2" pref="40" max="-2" attributes="1"/>
                       </Group>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="predictionInitializationAdaptionCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="fitnessInitializationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="fitnessInitializationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -976,6 +923,8 @@
                           <Component id="predictionInitializationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="predictionInitializationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="predictionInitializationAdaptionCheckBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="predictionErrorInitializationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1006,6 +955,7 @@
                           <Component id="betaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="betaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1125,6 +1075,16 @@
                 <Property name="toolTipText" type="java.lang.String" value="The discount rate in multi-step problems."/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JCheckBox" name="predictionInitializationAdaptionCheckBox">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="12" style="0"/>
+                </Property>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="Prediction init adaption"/>
+                <Property name="actionCommand" type="java.lang.String" value="Do GA Subsumption"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="classifierSubsumptionAndDeletionPanel">
@@ -1150,14 +1110,23 @@
                           <Component id="coveringWildcardProbabilityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="tournamentProbabilityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="thetaSubsumerTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
-                          <Component id="coveringWildcardProbabilityTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
-                          <Component id="thetaDelTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
-                          <Component id="deltaTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
-                          <Component id="maxPopSizeTextField" min="-2" pref="40" max="-2" attributes="1"/>
-                          <Component id="tournamentProbabilityTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="coveringWildcardProbabilityTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
+                                  <Component id="tournamentProbabilityTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="thetaDelTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
+                                  <Component id="thetaSubsumerTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
+                                  <Component id="deltaTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
+                                  <Component id="maxPopSizeTextField" alignment="0" min="-2" pref="40" max="-2" attributes="1"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <Component id="doActionSetSubsumptionCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1200,6 +1169,7 @@
                       <Component id="doActionSetSubsumptionCheckBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="randomStartCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1415,12 +1385,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="rewardModelPanel" alignment="0" max="32767" attributes="1"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="communicationPanel" alignment="0" max="32767" attributes="1"/>
-                      <Component id="explorationModePanel" alignment="0" max="32767" attributes="1"/>
                       <Component id="agentTypePanel" alignment="0" max="32767" attributes="1"/>
+                      <Component id="rewardModelPanel" alignment="0" min="-2" max="-2" attributes="1"/>
+                      <Component id="explorationModePanel" alignment="0" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -1435,8 +1405,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="explorationModePanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="communicationPanel" min="-2" pref="185" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="communicationPanel" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1461,10 +1430,9 @@
                           <Component id="randomizedMovementRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="intelligentAIAgentRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="simpleAIAgentRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="oldLCSAgentRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="delayedSXCSAgentRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="standardXCSAgentRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="singletonSXCSAgentRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="SXCSAgentRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="DSXCSAgentRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="XCSAgentRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="41" max="32767" attributes="0"/>
                   </Group>
@@ -1479,13 +1447,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="intelligentAIAgentRadioButton" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="standardXCSAgentRadioButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="XCSAgentRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="oldLCSAgentRadioButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="SXCSAgentRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="delayedSXCSAgentRadioButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="singletonSXCSAgentRadioButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="DSXCSAgentRadioButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1535,7 +1501,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="intelligentAIAgentRadioButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="delayedSXCSAgentRadioButton">
+            <Component class="javax.swing.JRadioButton" name="DSXCSAgentRadioButton">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="agentTypeButtonGroup"/>
@@ -1546,10 +1512,10 @@
                 <Property name="text" type="java.lang.String" value="Delayed SXCS"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delayedSXCSAgentRadioButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DSXCSAgentRadioButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="oldLCSAgentRadioButton">
+            <Component class="javax.swing.JRadioButton" name="SXCSAgentRadioButton">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="agentTypeButtonGroup"/>
@@ -1561,10 +1527,10 @@
                 <Property name="toolTipText" type="java.lang.String" value="LCS Agent with special reward function"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="oldLCSAgentRadioButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SXCSAgentRadioButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="standardXCSAgentRadioButton">
+            <Component class="javax.swing.JRadioButton" name="XCSAgentRadioButton">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="agentTypeButtonGroup"/>
@@ -1576,21 +1542,7 @@
                 <Property name="text" type="java.lang.String" value="Standard XCS"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="standardXCSAgentRadioButtonActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="singletonSXCSAgentRadioButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="agentTypeButtonGroup"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Singleton XCS"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="singletonSXCSAgentRadioButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="XCSAgentRadioButtonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -1686,37 +1638,27 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="noExternalRewardRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="rewardAllEquallyRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="rewardSimpleRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="rewardComplexRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="rewardNewRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="exchangeClassifiersCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="rewardEgoisticRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="31" max="32767" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="exchangeClassifiersCheckBox" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="noExternalRewardRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="rewardAllEquallyRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="rewardSimpleRadioButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rewardComplexRadioButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rewardNewRadioButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="rewardEgoisticRadioButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1755,36 +1697,6 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Simple relation"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="rewardComplexRadioButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="externalRewardButtonGroup"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Complex relation"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="rewardNewRadioButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="externalRewardButtonGroup"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Simple relation 2"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="exchangeClassifiersCheckBox">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Exchange classifiers"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rewardEgoisticRadioButton">
@@ -1906,5 +1818,31 @@
         </Container>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JCheckBox" name="logOutputCheckBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Log output"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="createAnimatedGIFCheckBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create GIF"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="saveSpeedButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Save speed"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveSpeedButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="saveStepsButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Save steps"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveStepsButtonActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

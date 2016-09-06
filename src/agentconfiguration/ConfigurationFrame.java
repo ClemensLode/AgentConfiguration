@@ -299,11 +299,9 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 case Configuration.RANDOMIZED_MOVEMENT_AGENT_TYPE:c = Color.white;break;
                 case Configuration.SIMPLE_AI_AGENT_TYPE:c = Color.LIGHT_GRAY;break;
                 case Configuration.INTELLIGENT_AI_AGENT_TYPE:c = Color.GRAY;break;
-                case Configuration.OLD_LCS_AGENT_TYPE:c = Color.cyan;break;
-                case Configuration.NEW_LCS_AGENT_TYPE:c = Color.green;break;
-                case Configuration.MULTISTEP_LCS_AGENT_TYPE:c = Color.orange;break;
-                case Configuration.SINGLE_LCS_AGENT_TYPE:c = Color.blue;break;
-
+                case Configuration.SXCS_AGENT_TYPE:c = Color.cyan;break;
+                case Configuration.DSXCS_AGENT_TYPE:c = Color.green;break;
+                case Configuration.XCS_AGENT_TYPE:c = Color.orange;break;
             }
 
             component.setBackground(c);
@@ -342,7 +340,6 @@ public class ConfigurationFrame extends javax.swing.JFrame {
 
             p.println(useMaxPredictionCheckBox.isSelected());
             p.println(useQuadraticRewardCheckBox.isSelected());
-            p.println(exchangeClassifiersCheckBox.isSelected());
 
             p.println(Integer.valueOf(maxXTextField.getText()));
             p.println(Integer.valueOf(maxYTextField.getText()));
@@ -385,6 +382,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             p.println(Double.valueOf(betaTextField.getText()));
 
             p.println(Double.valueOf(predictionInitializationTextField.getText()));
+            p.println(Boolean.valueOf(predictionInitializationAdaptionCheckBox.isSelected()));
             p.println(Double.valueOf(predictionErrorInitializationTextField.getText()));
             p.println(Double.valueOf(fitnessInitializationTextField.getText()));
 
@@ -420,21 +418,17 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 p.println(Configuration.TOTAL_RANDOM_MOVEMENT);
             } else if (randomGoalAgentMovementRadioButton.isSelected()) {
                 p.println(Configuration.RANDOM_MOVEMENT);
-            } else if (intelligentOpenGoalAgentMovementRadioButton.isSelected()) {
-                p.println(Configuration.INTELLIGENT_MOVEMENT_OPEN);
-            } else if (intelligentHideGoalAgentMovementRadioButton.isSelected()) {
-                p.println(Configuration.INTELLIGENT_MOVEMENT_HIDE);
             } else if (maxOneDirectionChangeGoalAgentMovementRadioButton.isSelected()) {
                 p.println(Configuration.RANDOM_DIRECTION_CHANGE);
+            } else if (intelligentGoalAgentMovementRadioButton.isSelected()) {
+                p.println(Configuration.INTELLIGENT_MOVEMENT);
             } else if (alwaysInTheSameDirectionGoalAgentMovementRadioButton.isSelected()) {
                 p.println(Configuration.ALWAYS_SAME_DIRECTION);
-            } else if(randomHideGoalAgentMovementRadioButton.isSelected()) {
-                p.println(Configuration.RANDOM_HIDE);
             } else if(LCSGoalAgentMovementRadioButton.isSelected()) {
-                p.println(Configuration.LCS_MOVEMENT);
+                p.println(Configuration.XCS_MOVEMENT);
             }
 
-            p.println(Integer.valueOf(goalAgentMovementSpeedTextField.getText()));
+            p.println(Double.valueOf(goalAgentMovementSpeedTextField.getText()));
 
             if (randomizedMovementRadioButton.isSelected()) {
                 p.println(Configuration.RANDOMIZED_MOVEMENT_AGENT_TYPE);
@@ -442,14 +436,12 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 p.println(Configuration.SIMPLE_AI_AGENT_TYPE);
             } else if (intelligentAIAgentRadioButton.isSelected()) {
                 p.println(Configuration.INTELLIGENT_AI_AGENT_TYPE);
-            } else if (delayedSXCSAgentRadioButton.isSelected()) {
-                p.println(Configuration.NEW_LCS_AGENT_TYPE);
-            } else if (oldLCSAgentRadioButton.isSelected()) {
-                p.println(Configuration.OLD_LCS_AGENT_TYPE);
-            } else if (standardXCSAgentRadioButton.isSelected()) {
-                p.println(Configuration.MULTISTEP_LCS_AGENT_TYPE);
-            } else if (singletonSXCSAgentRadioButton.isSelected()) {
-                p.println(Configuration.SINGLE_LCS_AGENT_TYPE);
+            } else if (DSXCSAgentRadioButton.isSelected()) {
+                p.println(Configuration.DSXCS_AGENT_TYPE);
+            } else if (SXCSAgentRadioButton.isSelected()) {
+                p.println(Configuration.SXCS_AGENT_TYPE);
+            } else if (XCSAgentRadioButton.isSelected()) {
+                p.println(Configuration.XCS_AGENT_TYPE);
             }
 
             if (noExternalRewardRadioButton.isSelected()) {
@@ -490,7 +482,6 @@ public class ConfigurationFrame extends javax.swing.JFrame {
 
         useMaxPredictionCheckBox.setSelected(Configuration.isUseMaxPrediction());
         useQuadraticRewardCheckBox.setSelected(Configuration.isUseQuadraticReward());
-        exchangeClassifiersCheckBox.setSelected(Configuration.isExchangeClassifiers());
 
         maxXTextField.setText(String.valueOf(Configuration.getMaxX()));
         maxYTextField.setText(String.valueOf(Configuration.getMaxY()));
@@ -542,6 +533,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         betaTextField.setText(String.valueOf(Configuration.getBeta()));
 
         predictionInitializationTextField.setText(String.valueOf(Configuration.getPredictionInitialization()));
+        predictionInitializationAdaptionCheckBox.setSelected(Configuration.isPredictionInitializationAdaption());
         predictionErrorInitializationTextField.setText(String.valueOf(Configuration.getPredictionErrorInitialization()));
         fitnessInitializationTextField.setText(String.valueOf(Configuration.getFitnessInitialization()));
 
@@ -569,10 +561,10 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 explorationModeButtonGroup.setSelected(alwaysExploitModeRadioButton.getModel(), true);
                 break;
             case Configuration.SWITCH_EXPLORATION_START_EXPLORE_MODE:
-                explorationModeButtonGroup.setSelected(switchExploitModeRadioButton.getModel(), true);
+                explorationModeButtonGroup.setSelected(switchExploreModeRadioButton.getModel(), true);
                 break;
             case Configuration.SWITCH_EXPLORATION_START_EXPLOIT_MODE:
-                explorationModeButtonGroup.setSelected(switchExploreModeRadioButton.getModel(), true);
+                explorationModeButtonGroup.setSelected(switchExploitModeRadioButton.getModel(), true);
                 break;
             case Configuration.RANDOM_EXPLORATION_MODE:
                 explorationModeButtonGroup.setSelected(randomExploreExploitModeRadioButton.getModel(), true);
@@ -586,22 +578,16 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             case Configuration.RANDOM_MOVEMENT:
                 goalAgentMovementButtonGroup.setSelected(randomGoalAgentMovementRadioButton.getModel(), true);
                 break;
-            case Configuration.INTELLIGENT_MOVEMENT_OPEN:
-                goalAgentMovementButtonGroup.setSelected(intelligentOpenGoalAgentMovementRadioButton.getModel(), true);
-                break;
-            case Configuration.INTELLIGENT_MOVEMENT_HIDE:
-                goalAgentMovementButtonGroup.setSelected(intelligentHideGoalAgentMovementRadioButton.getModel(), true);
-                break;
             case Configuration.RANDOM_DIRECTION_CHANGE:
                 goalAgentMovementButtonGroup.setSelected(maxOneDirectionChangeGoalAgentMovementRadioButton.getModel(), true);
+                break;
+            case Configuration.INTELLIGENT_MOVEMENT:
+                goalAgentMovementButtonGroup.setSelected(intelligentGoalAgentMovementRadioButton.getModel(), true);
                 break;
             case Configuration.ALWAYS_SAME_DIRECTION:
                 goalAgentMovementButtonGroup.setSelected(alwaysInTheSameDirectionGoalAgentMovementRadioButton.getModel(), true);
                 break;
-            case Configuration.RANDOM_HIDE:
-                goalAgentMovementButtonGroup.setSelected(randomHideGoalAgentMovementRadioButton.getModel(), true);
-                break;
-            case Configuration.LCS_MOVEMENT:
+            case Configuration.XCS_MOVEMENT:
                 goalAgentMovementButtonGroup.setSelected(LCSGoalAgentMovementRadioButton.getModel(), true);
                 break;
         }
@@ -622,20 +608,16 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 agentTypeButtonGroup.setSelected(intelligentAIAgentRadioButton.getModel(), true);
                 activateLCSControls(false);
                 break;
-            case Configuration.NEW_LCS_AGENT_TYPE:
-                agentTypeButtonGroup.setSelected(delayedSXCSAgentRadioButton.getModel(), true);
+            case Configuration.DSXCS_AGENT_TYPE:
+                agentTypeButtonGroup.setSelected(DSXCSAgentRadioButton.getModel(), true);
                 activateLCSControls(true);
                 break;
-            case Configuration.OLD_LCS_AGENT_TYPE:
-                agentTypeButtonGroup.setSelected(oldLCSAgentRadioButton.getModel(), true);
+            case Configuration.SXCS_AGENT_TYPE:
+                agentTypeButtonGroup.setSelected(SXCSAgentRadioButton.getModel(), true);
                 activateLCSControls(true);
                 break;
-            case Configuration.MULTISTEP_LCS_AGENT_TYPE:
-                agentTypeButtonGroup.setSelected(standardXCSAgentRadioButton.getModel(), true);
-                activateLCSControls(true);
-                break;
-            case Configuration.SINGLE_LCS_AGENT_TYPE:
-                agentTypeButtonGroup.setSelected(singletonSXCSAgentRadioButton.getModel(), true);
+            case Configuration.XCS_AGENT_TYPE:
+                agentTypeButtonGroup.setSelected(XCSAgentRadioButton.getModel(), true);
                 activateLCSControls(true);
                 break;
         }
@@ -773,11 +755,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         rewardDistanceTextField = new javax.swing.JTextField();
         randomScenarioRadioButton = new javax.swing.JRadioButton();
         pillarScenarioRadioButton = new javax.swing.JRadioButton();
-        crossScenarioRadioButton = new javax.swing.JRadioButton();
-        roomScenarioRadioButton = new javax.swing.JRadioButton();
         difficultScenarioRadioButton = new javax.swing.JRadioButton();
-        nonTorusScenarioRadioButton = new javax.swing.JRadioButton();
-        mazeScenarioRadioButton = new javax.swing.JRadioButton();
         sightRangeTextField = new javax.swing.JTextField();
         rewardDistanceLabel = new javax.swing.JLabel();
         testsPanel = new javax.swing.JPanel();
@@ -791,8 +769,6 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         maxAgentsTextField = new javax.swing.JTextField();
         stepsLabel = new javax.swing.JLabel();
         problemsLabel = new javax.swing.JLabel();
-        createAnimatedGIFCheckBox = new javax.swing.JCheckBox();
-        logOutputCheckBox = new javax.swing.JCheckBox();
         goalAgentMovementPanel = new javax.swing.JPanel();
         totalRandomGoalAgentMovementRadioButton = new javax.swing.JRadioButton();
         randomGoalAgentMovementRadioButton = new javax.swing.JRadioButton();
@@ -800,10 +776,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         alwaysInTheSameDirectionGoalAgentMovementRadioButton = new javax.swing.JRadioButton();
         goalAgentMovementSpeedLabel = new javax.swing.JLabel();
         goalAgentMovementSpeedTextField = new javax.swing.JTextField();
-        intelligentHideGoalAgentMovementRadioButton = new javax.swing.JRadioButton();
-        intelligentOpenGoalAgentMovementRadioButton = new javax.swing.JRadioButton();
+        intelligentGoalAgentMovementRadioButton = new javax.swing.JRadioButton();
         LCSGoalAgentMovementRadioButton = new javax.swing.JRadioButton();
-        randomHideGoalAgentMovementRadioButton = new javax.swing.JRadioButton();
         lcsParametersPanel = new javax.swing.JPanel();
         gaParametersPanel = new javax.swing.JPanel();
         thetaLabel = new javax.swing.JLabel();
@@ -833,6 +807,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         nuTextField = new javax.swing.JTextField();
         gammaLabel = new javax.swing.JLabel();
         gammaTextField = new javax.swing.JTextField();
+        predictionInitializationAdaptionCheckBox = new javax.swing.JCheckBox();
         classifierSubsumptionAndDeletionPanel = new javax.swing.JPanel();
         thetaSubsumerLabel = new javax.swing.JLabel();
         thetaSubsumerTextField = new javax.swing.JTextField();
@@ -863,10 +838,9 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         randomizedMovementRadioButton = new javax.swing.JRadioButton();
         simpleAIAgentRadioButton = new javax.swing.JRadioButton();
         intelligentAIAgentRadioButton = new javax.swing.JRadioButton();
-        delayedSXCSAgentRadioButton = new javax.swing.JRadioButton();
-        oldLCSAgentRadioButton = new javax.swing.JRadioButton();
-        standardXCSAgentRadioButton = new javax.swing.JRadioButton();
-        singletonSXCSAgentRadioButton = new javax.swing.JRadioButton();
+        DSXCSAgentRadioButton = new javax.swing.JRadioButton();
+        SXCSAgentRadioButton = new javax.swing.JRadioButton();
+        XCSAgentRadioButton = new javax.swing.JRadioButton();
         rewardModelPanel = new javax.swing.JPanel();
         maxStackSizeLabel = new javax.swing.JLabel();
         maxStackSizeTextField = new javax.swing.JTextField();
@@ -876,9 +850,6 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         noExternalRewardRadioButton = new javax.swing.JRadioButton();
         rewardAllEquallyRadioButton = new javax.swing.JRadioButton();
         rewardSimpleRadioButton = new javax.swing.JRadioButton();
-        rewardComplexRadioButton = new javax.swing.JRadioButton();
-        rewardNewRadioButton = new javax.swing.JRadioButton();
-        exchangeClassifiersCheckBox = new javax.swing.JCheckBox();
         rewardEgoisticRadioButton = new javax.swing.JRadioButton();
         explorationModePanel = new javax.swing.JPanel();
         alwaysExploreModeRadioButton = new javax.swing.JRadioButton();
@@ -886,6 +857,10 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         switchExploitModeRadioButton = new javax.swing.JRadioButton();
         randomExploreExploitModeRadioButton = new javax.swing.JRadioButton();
         switchExploreModeRadioButton = new javax.swing.JRadioButton();
+        logOutputCheckBox = new javax.swing.JCheckBox();
+        createAnimatedGIFCheckBox = new javax.swing.JCheckBox();
+        saveSpeedButton = new javax.swing.JButton();
+        saveStepsButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agent Configuration File Editor v1.00");
@@ -943,35 +918,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             }
         });
 
-        scenarioTypeButtonGroup.add(crossScenarioRadioButton);
-        crossScenarioRadioButton.setText("Cross scenario");
-        crossScenarioRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crossScenarioRadioButtonActionPerformed(evt);
-            }
-        });
-
-        scenarioTypeButtonGroup.add(roomScenarioRadioButton);
-        roomScenarioRadioButton.setText("Room scenario");
-        roomScenarioRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomScenarioRadioButtonActionPerformed(evt);
-            }
-        });
-
         scenarioTypeButtonGroup.add(difficultScenarioRadioButton);
         difficultScenarioRadioButton.setText("Difficult scenario");
-
-        scenarioTypeButtonGroup.add(nonTorusScenarioRadioButton);
-        nonTorusScenarioRadioButton.setText("Non-Torus");
-
-        scenarioTypeButtonGroup.add(mazeScenarioRadioButton);
-        mazeScenarioRadioButton.setText("Maze scenario");
-        mazeScenarioRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mazeScenarioRadioButtonActionPerformed(evt);
-            }
-        });
 
         sightRangeTextField.setText("5.0");
 
@@ -984,13 +932,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             gridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gridPanelLayout.createSequentialGroup()
                 .addGroup(gridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(crossScenarioRadioButton)
-                    .addComponent(roomScenarioRadioButton)
                     .addComponent(difficultScenarioRadioButton)
                     .addComponent(randomScenarioRadioButton)
-                    .addComponent(mazeScenarioRadioButton)
-                    .addComponent(nonTorusScenarioRadioButton)
-                    .addComponent(pillarScenarioRadioButton)
                     .addGroup(gridPanelLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(obstaclePercentageLabel)
@@ -1014,7 +957,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                         .addGroup(gridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(rewardDistanceTextField)
-                            .addComponent(sightRangeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))))
+                            .addComponent(sightRangeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)))
+                    .addComponent(pillarScenarioRadioButton))
                 .addContainerGap())
         );
         gridPanelLayout.setVerticalGroup(
@@ -1043,16 +987,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                     .addComponent(obstacleConnectionFactorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(obstacleConnectionFactorLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mazeScenarioRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nonTorusScenarioRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pillarScenarioRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(crossScenarioRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(roomScenarioRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(difficultScenarioRadioButton)
                 .addGap(89, 89, 89))
         );
@@ -1084,17 +1020,12 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         problemsLabel.setFont(new java.awt.Font("Arial", 0, 12));
         problemsLabel.setText("Problems");
 
-        createAnimatedGIFCheckBox.setText("Create animated GIF");
-
-        logOutputCheckBox.setText("Log output");
-
         javax.swing.GroupLayout testsPanelLayout = new javax.swing.GroupLayout(testsPanel);
         testsPanel.setLayout(testsPanelLayout);
         testsPanelLayout.setHorizontalGroup(
             testsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(testsPanelLayout.createSequentialGroup()
                 .addGroup(testsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(createAnimatedGIFCheckBox)
                     .addGroup(testsPanelLayout.createSequentialGroup()
                         .addComponent(agentCountLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1106,13 +1037,13 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                             .addComponent(problemsLabel)
                             .addComponent(stepsLabel))
                         .addGap(20, 20, 20)
-                        .addGroup(testsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(numberOfStepsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numberOfProblemsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(testsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(randomSeedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(numberOfExperimentsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(logOutputCheckBox))
+                        .addGroup(testsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(testsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(numberOfProblemsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(testsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(randomSeedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(numberOfExperimentsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(numberOfStepsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -1140,10 +1071,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addGroup(testsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(agentCountLabel)
                     .addComponent(maxAgentsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(createAnimatedGIFCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(logOutputCheckBox))
+                .addContainerGap())
         );
 
         goalAgentMovementPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Goal Agent Movement", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -1158,7 +1086,6 @@ public class ConfigurationFrame extends javax.swing.JFrame {
 
         goalAgentMovementButtonGroup.add(maxOneDirectionChangeGoalAgentMovementRadioButton);
         maxOneDirectionChangeGoalAgentMovementRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
-        maxOneDirectionChangeGoalAgentMovementRadioButton.setSelected(true);
         maxOneDirectionChangeGoalAgentMovementRadioButton.setText("One direction change");
 
         goalAgentMovementButtonGroup.add(alwaysInTheSameDirectionGoalAgentMovementRadioButton);
@@ -1168,45 +1095,40 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         goalAgentMovementSpeedLabel.setFont(new java.awt.Font("Arial", 0, 12));
         goalAgentMovementSpeedLabel.setText("Speed");
 
-        goalAgentMovementSpeedTextField.setText("2");
+        goalAgentMovementSpeedTextField.setText("1.5");
 
-        goalAgentMovementButtonGroup.add(intelligentHideGoalAgentMovementRadioButton);
-        intelligentHideGoalAgentMovementRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
-        intelligentHideGoalAgentMovementRadioButton.setText("Intelligent (hide)");
-        intelligentHideGoalAgentMovementRadioButton.setToolTipText("Move away from other agents, tend to move towards walls");
-
-        goalAgentMovementButtonGroup.add(intelligentOpenGoalAgentMovementRadioButton);
-        intelligentOpenGoalAgentMovementRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
-        intelligentOpenGoalAgentMovementRadioButton.setText("Intelligent (open)");
-        intelligentOpenGoalAgentMovementRadioButton.setToolTipText("Move away from other agents, tend to move away from walls");
+        goalAgentMovementButtonGroup.add(intelligentGoalAgentMovementRadioButton);
+        intelligentGoalAgentMovementRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
+        intelligentGoalAgentMovementRadioButton.setText("Intelligent");
+        intelligentGoalAgentMovementRadioButton.setToolTipText("Move away from other agents");
 
         goalAgentMovementButtonGroup.add(LCSGoalAgentMovementRadioButton);
         LCSGoalAgentMovementRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
-        LCSGoalAgentMovementRadioButton.setText("LCS");
+        LCSGoalAgentMovementRadioButton.setText("SXCS");
         LCSGoalAgentMovementRadioButton.setToolTipText("Reward by agents out of sight");
-
-        goalAgentMovementButtonGroup.add(randomHideGoalAgentMovementRadioButton);
-        randomHideGoalAgentMovementRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
-        randomHideGoalAgentMovementRadioButton.setText("Random (Hide)");
 
         javax.swing.GroupLayout goalAgentMovementPanelLayout = new javax.swing.GroupLayout(goalAgentMovementPanel);
         goalAgentMovementPanel.setLayout(goalAgentMovementPanelLayout);
         goalAgentMovementPanelLayout.setHorizontalGroup(
             goalAgentMovementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(intelligentHideGoalAgentMovementRadioButton)
             .addComponent(totalRandomGoalAgentMovementRadioButton)
             .addComponent(randomGoalAgentMovementRadioButton)
-            .addComponent(maxOneDirectionChangeGoalAgentMovementRadioButton)
-            .addComponent(alwaysInTheSameDirectionGoalAgentMovementRadioButton)
-            .addComponent(intelligentOpenGoalAgentMovementRadioButton)
+            .addComponent(intelligentGoalAgentMovementRadioButton)
             .addGroup(goalAgentMovementPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(goalAgentMovementSpeedLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(goalAgentMovementSpeedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
-            .addComponent(LCSGoalAgentMovementRadioButton)
-            .addComponent(randomHideGoalAgentMovementRadioButton)
+            .addGroup(goalAgentMovementPanelLayout.createSequentialGroup()
+                .addComponent(maxOneDirectionChangeGoalAgentMovementRadioButton)
+                .addContainerGap())
+            .addGroup(goalAgentMovementPanelLayout.createSequentialGroup()
+                .addComponent(alwaysInTheSameDirectionGoalAgentMovementRadioButton)
+                .addContainerGap())
+            .addGroup(goalAgentMovementPanelLayout.createSequentialGroup()
+                .addComponent(LCSGoalAgentMovementRadioButton)
+                .addContainerGap())
         );
         goalAgentMovementPanelLayout.setVerticalGroup(
             goalAgentMovementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1215,15 +1137,11 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(randomGoalAgentMovementRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(intelligentOpenGoalAgentMovementRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(intelligentHideGoalAgentMovementRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(maxOneDirectionChangeGoalAgentMovementRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(alwaysInTheSameDirectionGoalAgentMovementRadioButton)
+                .addComponent(intelligentGoalAgentMovementRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(randomHideGoalAgentMovementRadioButton)
+                .addComponent(alwaysInTheSameDirectionGoalAgentMovementRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LCSGoalAgentMovementRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1238,9 +1156,9 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             problemDefinitionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(problemDefinitionPanelLayout.createSequentialGroup()
                 .addGroup(problemDefinitionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(testsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gridPanel, 0, 161, Short.MAX_VALUE)
-                    .addComponent(goalAgentMovementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(testsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(goalAgentMovementPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         problemDefinitionPanelLayout.setVerticalGroup(
@@ -1248,10 +1166,10 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             .addGroup(problemDefinitionPanelLayout.createSequentialGroup()
                 .addComponent(testsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(gridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(gridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(goalAgentMovementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGap(91, 91, 91))
         );
 
         lcsParametersPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LCS parameters", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -1312,7 +1230,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                     .addComponent(doEvolutionaryAlgorithmCheckBox)
                     .addComponent(fitnessReductionLabel)
                     .addComponent(predictionErrorReductionLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
                 .addGroup(gaParametersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fitnessReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(predictionErrorReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1397,6 +1315,11 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         gammaTextField.setText("0.71");
         gammaTextField.setToolTipText("The discount rate in multi-step problems.");
 
+        predictionInitializationAdaptionCheckBox.setFont(new java.awt.Font("Arial", 0, 12));
+        predictionInitializationAdaptionCheckBox.setSelected(true);
+        predictionInitializationAdaptionCheckBox.setText("Prediction init adaption");
+        predictionInitializationAdaptionCheckBox.setActionCommand("Do GA Subsumption");
+
         javax.swing.GroupLayout fitnessAndPredictionPanelLayout = new javax.swing.GroupLayout(fitnessAndPredictionPanel);
         fitnessAndPredictionPanel.setLayout(fitnessAndPredictionPanelLayout);
         fitnessAndPredictionPanelLayout.setHorizontalGroup(
@@ -1404,13 +1327,13 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             .addGroup(fitnessAndPredictionPanelLayout.createSequentialGroup()
                 .addGroup(fitnessAndPredictionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(predictionErrorInitializationLabel)
-                    .addComponent(predictionInitializationLabel)
-                    .addComponent(fitnessInitializationLabel)
                     .addComponent(alphaLabel)
                     .addComponent(betaLabel)
                     .addComponent(gammaLabel)
                     .addComponent(nuLabel)
-                    .addComponent(epsilon0Label))
+                    .addComponent(epsilon0Label)
+                    .addComponent(fitnessInitializationLabel)
+                    .addComponent(predictionInitializationLabel))
                 .addGap(28, 28, 28)
                 .addGroup(fitnessAndPredictionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fitnessAndPredictionPanelLayout.createSequentialGroup()
@@ -1421,15 +1344,14 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                             .addComponent(gammaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(betaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(epsilon0TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(predictionErrorInitializationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fitnessInitializationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(predictionInitializationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(predictionErrorInitializationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(predictionInitializationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(predictionInitializationAdaptionCheckBox)
         );
         fitnessAndPredictionPanelLayout.setVerticalGroup(
             fitnessAndPredictionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fitnessAndPredictionPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
                 .addGroup(fitnessAndPredictionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fitnessInitializationLabel)
                     .addComponent(fitnessInitializationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1437,6 +1359,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addGroup(fitnessAndPredictionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(predictionInitializationLabel)
                     .addComponent(predictionInitializationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(predictionInitializationAdaptionCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fitnessAndPredictionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(predictionErrorInitializationLabel)
@@ -1460,7 +1384,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fitnessAndPredictionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(betaLabel)
-                    .addComponent(betaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(betaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         classifierSubsumptionAndDeletionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Classifier subsumption and deletion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -1526,14 +1451,19 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                     .addComponent(maxPopSizeLabel)
                     .addComponent(coveringWildcardProbabilityLabel)
                     .addComponent(tournamentProbabilityLabel))
-                .addGap(24, 24, 24)
                 .addGroup(classifierSubsumptionAndDeletionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(thetaSubsumerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(coveringWildcardProbabilityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(thetaDelTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deltaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(maxPopSizeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tournamentProbabilityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(classifierSubsumptionAndDeletionPanelLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(classifierSubsumptionAndDeletionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(coveringWildcardProbabilityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tournamentProbabilityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(classifierSubsumptionAndDeletionPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(classifierSubsumptionAndDeletionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(thetaDelTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(thetaSubsumerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deltaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(maxPopSizeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
             .addComponent(doActionSetSubsumptionCheckBox)
             .addComponent(randomStartCheckBox)
         );
@@ -1566,7 +1496,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(doActionSetSubsumptionCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(randomStartCheckBox))
+                .addComponent(randomStartCheckBox)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout lcsParametersPanelLayout = new javax.swing.GroupLayout(lcsParametersPanel);
@@ -1575,20 +1506,19 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             lcsParametersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lcsParametersPanelLayout.createSequentialGroup()
                 .addGroup(lcsParametersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(classifierSubsumptionAndDeletionPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                    .addComponent(gaParametersPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fitnessAndPredictionPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(fitnessAndPredictionPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(gaParametersPanel, javax.swing.GroupLayout.Alignment.LEADING, 0, 213, Short.MAX_VALUE)
+                    .addComponent(classifierSubsumptionAndDeletionPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         lcsParametersPanelLayout.setVerticalGroup(
             lcsParametersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lcsParametersPanelLayout.createSequentialGroup()
-                .addComponent(classifierSubsumptionAndDeletionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(classifierSubsumptionAndDeletionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gaParametersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fitnessAndPredictionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(fitnessAndPredictionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
         );
 
         packageButton.setFont(new java.awt.Font("Tahoma", 1, 11));
@@ -1686,41 +1616,32 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             }
         });
 
-        agentTypeButtonGroup.add(delayedSXCSAgentRadioButton);
-        delayedSXCSAgentRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
-        delayedSXCSAgentRadioButton.setText("Delayed SXCS");
-        delayedSXCSAgentRadioButton.addActionListener(new java.awt.event.ActionListener() {
+        agentTypeButtonGroup.add(DSXCSAgentRadioButton);
+        DSXCSAgentRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
+        DSXCSAgentRadioButton.setText("Delayed SXCS");
+        DSXCSAgentRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                delayedSXCSAgentRadioButtonActionPerformed(evt);
+                DSXCSAgentRadioButtonActionPerformed(evt);
             }
         });
 
-        agentTypeButtonGroup.add(oldLCSAgentRadioButton);
-        oldLCSAgentRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
-        oldLCSAgentRadioButton.setText("Surveillance XCS");
-        oldLCSAgentRadioButton.setToolTipText("LCS Agent with special reward function");
-        oldLCSAgentRadioButton.addActionListener(new java.awt.event.ActionListener() {
+        agentTypeButtonGroup.add(SXCSAgentRadioButton);
+        SXCSAgentRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
+        SXCSAgentRadioButton.setText("Surveillance XCS");
+        SXCSAgentRadioButton.setToolTipText("LCS Agent with special reward function");
+        SXCSAgentRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                oldLCSAgentRadioButtonActionPerformed(evt);
+                SXCSAgentRadioButtonActionPerformed(evt);
             }
         });
 
-        agentTypeButtonGroup.add(standardXCSAgentRadioButton);
-        standardXCSAgentRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
-        standardXCSAgentRadioButton.setSelected(true);
-        standardXCSAgentRadioButton.setText("Standard XCS");
-        standardXCSAgentRadioButton.addActionListener(new java.awt.event.ActionListener() {
+        agentTypeButtonGroup.add(XCSAgentRadioButton);
+        XCSAgentRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
+        XCSAgentRadioButton.setSelected(true);
+        XCSAgentRadioButton.setText("Standard XCS");
+        XCSAgentRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                standardXCSAgentRadioButtonActionPerformed(evt);
-            }
-        });
-
-        agentTypeButtonGroup.add(singletonSXCSAgentRadioButton);
-        singletonSXCSAgentRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
-        singletonSXCSAgentRadioButton.setText("Singleton XCS");
-        singletonSXCSAgentRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                singletonSXCSAgentRadioButtonActionPerformed(evt);
+                XCSAgentRadioButtonActionPerformed(evt);
             }
         });
 
@@ -1733,10 +1654,9 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                     .addComponent(randomizedMovementRadioButton)
                     .addComponent(intelligentAIAgentRadioButton)
                     .addComponent(simpleAIAgentRadioButton)
-                    .addComponent(oldLCSAgentRadioButton)
-                    .addComponent(delayedSXCSAgentRadioButton)
-                    .addComponent(standardXCSAgentRadioButton)
-                    .addComponent(singletonSXCSAgentRadioButton))
+                    .addComponent(SXCSAgentRadioButton)
+                    .addComponent(DSXCSAgentRadioButton)
+                    .addComponent(XCSAgentRadioButton))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         agentTypePanelLayout.setVerticalGroup(
@@ -1748,13 +1668,11 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(intelligentAIAgentRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(standardXCSAgentRadioButton)
+                .addComponent(XCSAgentRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(oldLCSAgentRadioButton)
+                .addComponent(SXCSAgentRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(delayedSXCSAgentRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(singletonSXCSAgentRadioButton))
+                .addComponent(DSXCSAgentRadioButton))
         );
 
         rewardModelPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reward model", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -1814,19 +1732,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         rewardSimpleRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
         rewardSimpleRadioButton.setText("Simple relation");
 
-        externalRewardButtonGroup.add(rewardComplexRadioButton);
-        rewardComplexRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
-        rewardComplexRadioButton.setText("Complex relation");
-
-        externalRewardButtonGroup.add(rewardNewRadioButton);
-        rewardNewRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
-        rewardNewRadioButton.setText("Simple relation 2");
-
-        exchangeClassifiersCheckBox.setFont(new java.awt.Font("Arial", 0, 12));
-        exchangeClassifiersCheckBox.setText("Exchange classifiers");
-
         externalRewardButtonGroup.add(rewardEgoisticRadioButton);
-        rewardEgoisticRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
+        rewardEgoisticRadioButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         rewardEgoisticRadioButton.setText("Egoistic relation");
 
         javax.swing.GroupLayout communicationPanelLayout = new javax.swing.GroupLayout(communicationPanel);
@@ -1838,43 +1745,33 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                     .addComponent(noExternalRewardRadioButton)
                     .addComponent(rewardAllEquallyRadioButton)
                     .addComponent(rewardSimpleRadioButton)
-                    .addComponent(rewardComplexRadioButton)
-                    .addComponent(rewardNewRadioButton)
-                    .addComponent(exchangeClassifiersCheckBox)
                     .addComponent(rewardEgoisticRadioButton))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         communicationPanelLayout.setVerticalGroup(
             communicationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(communicationPanelLayout.createSequentialGroup()
-                .addComponent(exchangeClassifiersCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(noExternalRewardRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rewardAllEquallyRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rewardSimpleRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rewardComplexRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rewardNewRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rewardEgoisticRadioButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(rewardEgoisticRadioButton))
         );
 
         explorationModePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Exploration Mode", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         explorationModeButtonGroup.add(alwaysExploreModeRadioButton);
-        alwaysExploreModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        alwaysExploreModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
         alwaysExploreModeRadioButton.setText("Always explore");
 
         explorationModeButtonGroup.add(alwaysExploitModeRadioButton);
-        alwaysExploitModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        alwaysExploitModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
         alwaysExploitModeRadioButton.setText("Always exploit");
 
         explorationModeButtonGroup.add(switchExploitModeRadioButton);
-        switchExploitModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        switchExploitModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
         switchExploitModeRadioButton.setSelected(true);
         switchExploitModeRadioButton.setText("Switch (exploit)");
         switchExploitModeRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1884,11 +1781,11 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         });
 
         explorationModeButtonGroup.add(randomExploreExploitModeRadioButton);
-        randomExploreExploitModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        randomExploreExploitModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
         randomExploreExploitModeRadioButton.setText("Random explore/exploit");
 
         explorationModeButtonGroup.add(switchExploreModeRadioButton);
-        switchExploreModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        switchExploreModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
         switchExploreModeRadioButton.setText("Switch (explore)");
 
         javax.swing.GroupLayout explorationModePanelLayout = new javax.swing.GroupLayout(explorationModePanel);
@@ -1922,12 +1819,12 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(rewardModelPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(communicationPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(explorationModePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(agentTypePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(agentTypePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rewardModelPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(explorationModePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -1939,9 +1836,26 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(explorationModePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(communicationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addComponent(communicationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        logOutputCheckBox.setText("Log output");
+
+        createAnimatedGIFCheckBox.setText("Create GIF");
+
+        saveSpeedButton.setText("Save speed");
+        saveSpeedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveSpeedButtonActionPerformed(evt);
+            }
+        });
+
+        saveStepsButton.setText("Save steps");
+        saveStepsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveStepsButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1949,56 +1863,82 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(problemDefinitionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(problemDefinitionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lcsParametersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(createAnimatedGIFCheckBox))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(saveNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(packageButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(runLastBatchButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(updateDatabaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(logOutputCheckBox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lcsParametersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(saveNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(saveSpeedButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(packageButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(runLastBatchButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(updateDatabaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteButton))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(saveAllRandomButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(saveAllExplorationButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(saveAllStackButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(saveAllPopulationButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(resultsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addComponent(saveAllPopulationButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteButton)
+                        .addGap(7, 7, 7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(saveStepsButton)
+                        .addGap(490, 490, 490)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(resultsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 835, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(problemDefinitionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lcsParametersPanel, 0, 673, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(packageButton)
-                    .addComponent(saveNewButton)
-                    .addComponent(runLastBatchButton)
-                    .addComponent(updateDatabaseButton)
-                    .addComponent(deleteButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveAllRandomButton)
-                    .addComponent(saveAllExplorationButton)
-                    .addComponent(saveAllStackButton)
-                    .addComponent(saveAllPopulationButton)))
-            .addComponent(resultsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(problemDefinitionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(logOutputCheckBox)
+                                .addGap(23, 23, 23)
+                                .addComponent(createAnimatedGIFCheckBox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(saveNewButton)
+                                    .addComponent(packageButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(runLastBatchButton)
+                                    .addComponent(updateDatabaseButton)))
+                            .addComponent(lcsParametersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(saveSpeedButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(saveStepsButton))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(deleteButton)
+                                .addComponent(saveAllPopulationButton)
+                                .addComponent(saveAllStackButton)
+                                .addComponent(saveAllExplorationButton)
+                                .addComponent(saveAllRandomButton))))
+                    .addComponent(resultsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -2045,13 +1985,13 @@ private void intelligentAIAgentRadioButtonActionPerformed(java.awt.event.ActionE
     activateLCSControls(!intelligentAIAgentRadioButton.isSelected());
 }//GEN-LAST:event_intelligentAIAgentRadioButtonActionPerformed
 
-private void delayedSXCSAgentRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delayedSXCSAgentRadioButtonActionPerformed
-    activateLCSControls(delayedSXCSAgentRadioButton.isSelected());
-}//GEN-LAST:event_delayedSXCSAgentRadioButtonActionPerformed
+private void DSXCSAgentRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DSXCSAgentRadioButtonActionPerformed
+    activateLCSControls(DSXCSAgentRadioButton.isSelected());
+}//GEN-LAST:event_DSXCSAgentRadioButtonActionPerformed
 
-private void oldLCSAgentRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldLCSAgentRadioButtonActionPerformed
-    activateLCSControls(oldLCSAgentRadioButton.isSelected());
-}//GEN-LAST:event_oldLCSAgentRadioButtonActionPerformed
+private void SXCSAgentRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SXCSAgentRadioButtonActionPerformed
+    activateLCSControls(SXCSAgentRadioButton.isSelected());
+}//GEN-LAST:event_SXCSAgentRadioButtonActionPerformed
 
 private void runLastBatchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runLastBatchButtonActionPerformed
     runLastBatchButton.setEnabled(false);
@@ -2137,9 +2077,9 @@ private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     loadResultsIntoDatabase();
 }//GEN-LAST:event_deleteButtonActionPerformed
 
-private void standardXCSAgentRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standardXCSAgentRadioButtonActionPerformed
-    activateLCSControls(standardXCSAgentRadioButton.isSelected());
-}//GEN-LAST:event_standardXCSAgentRadioButtonActionPerformed
+private void XCSAgentRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XCSAgentRadioButtonActionPerformed
+    activateLCSControls(XCSAgentRadioButton.isSelected());
+}//GEN-LAST:event_XCSAgentRadioButtonActionPerformed
 
 private void randomScenarioRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScenarioRadioButtonActionPerformed
     activateRandomGridParameters(randomScenarioRadioButton.isSelected());
@@ -2148,18 +2088,6 @@ private void randomScenarioRadioButtonActionPerformed(java.awt.event.ActionEvent
 private void pillarScenarioRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pillarScenarioRadioButtonActionPerformed
     activateRandomGridParameters(!pillarScenarioRadioButton.isSelected());
 }//GEN-LAST:event_pillarScenarioRadioButtonActionPerformed
-
-private void crossScenarioRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crossScenarioRadioButtonActionPerformed
-    activateRandomGridParameters(!crossScenarioRadioButton.isSelected());
-}//GEN-LAST:event_crossScenarioRadioButtonActionPerformed
-
-private void roomScenarioRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomScenarioRadioButtonActionPerformed
-    activateRandomGridParameters(!roomScenarioRadioButton.isSelected());
-}//GEN-LAST:event_roomScenarioRadioButtonActionPerformed
-
-private void singletonSXCSAgentRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singletonSXCSAgentRadioButtonActionPerformed
-    activateCommunicationControls(singletonSXCSAgentRadioButton.isSelected());
-}//GEN-LAST:event_singletonSXCSAgentRadioButtonActionPerformed
 
 private void saveScenario() {
     String id = new String(timeString + "-" + conf_id);
@@ -2275,10 +2203,6 @@ private void saveAllExplorationButtonActionPerformed(java.awt.event.ActionEvent 
     packageButton.setEnabled(true);
 }//GEN-LAST:event_saveAllExplorationButtonActionPerformed
 
-private void mazeScenarioRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mazeScenarioRadioButtonActionPerformed
-    // TODO add your handling code here:
-}//GEN-LAST:event_mazeScenarioRadioButtonActionPerformed
-
 private void saveAllPopulationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAllPopulationButtonActionPerformed
     this.saveSettings("default.txt");
     String old_pop_size = maxPopSizeTextField.getText();
@@ -2302,8 +2226,43 @@ private void switchExploitModeRadioButtonActionPerformed(java.awt.event.ActionEv
     // TODO add your handling code here:
 }//GEN-LAST:event_switchExploitModeRadioButtonActionPerformed
 
+private void saveSpeedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveSpeedButtonActionPerformed
+    this.saveSettings("default.txt");
+    String old_speed = goalAgentMovementSpeedTextField.getText();
+
+    for(int i = 0; i < 21; i++) {
+        goalAgentMovementSpeedTextField.setText(new String("" + (((double)i)/10.0)));
+
+        String id = new String(timeString + "-" + conf_id);
+        this.saveSettings("config-" + id + ".txt");
+        config_strings.add(id);
+        conf_id++;
+    }
+    goalAgentMovementSpeedTextField.setText(old_speed);
+    packageButton.setEnabled(true);
+}//GEN-LAST:event_saveSpeedButtonActionPerformed
+
+private void saveStepsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveStepsButtonActionPerformed
+    this.saveSettings("default.txt");
+    String old_steps = numberOfStepsTextField.getText();
+
+    int steps = 250;
+
+    for(int i = 0; i < 4; i++) {
+        numberOfStepsTextField.setText(new String("" + steps));
+        steps *= 2;
+
+        String id = new String(timeString + "-" + conf_id);
+        this.saveSettings("config-" + id + ".txt");
+        config_strings.add(id);
+        conf_id++;
+    }
+
+    numberOfStepsTextField.setText(old_steps);
+    packageButton.setEnabled(true);
+}//GEN-LAST:event_saveStepsButtonActionPerformed
+
 private void activateCommunicationControls(boolean activate) {
-    exchangeClassifiersCheckBox.setEnabled(activate);
     for (Enumeration<AbstractButton> e = externalRewardButtonGroup.getElements() ; e.hasMoreElements() ;) {
         e.nextElement().setEnabled(activate);
     }
@@ -2335,7 +2294,10 @@ private void activateCommunicationControls(boolean activate) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton DSXCSAgentRadioButton;
     private javax.swing.JRadioButton LCSGoalAgentMovementRadioButton;
+    private javax.swing.JRadioButton SXCSAgentRadioButton;
+    private javax.swing.JRadioButton XCSAgentRadioButton;
     private javax.swing.JLabel agentCountLabel;
     private javax.swing.ButtonGroup agentTypeButtonGroup;
     private javax.swing.JPanel agentTypePanel;
@@ -2351,8 +2313,6 @@ private void activateCommunicationControls(boolean activate) {
     private javax.swing.JLabel coveringWildcardProbabilityLabel;
     private javax.swing.JTextField coveringWildcardProbabilityTextField;
     private javax.swing.JCheckBox createAnimatedGIFCheckBox;
-    private javax.swing.JRadioButton crossScenarioRadioButton;
-    private javax.swing.JRadioButton delayedSXCSAgentRadioButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel deltaLabel;
     private javax.swing.JTextField deltaTextField;
@@ -2362,7 +2322,6 @@ private void activateCommunicationControls(boolean activate) {
     private javax.swing.JCheckBox doGASubsumptionCheckBox;
     private javax.swing.JLabel epsilon0Label;
     private javax.swing.JTextField epsilon0TextField;
-    private javax.swing.JCheckBox exchangeClassifiersCheckBox;
     private javax.swing.ButtonGroup explorationModeButtonGroup;
     private javax.swing.JPanel explorationModePanel;
     private javax.swing.ButtonGroup externalRewardButtonGroup;
@@ -2381,8 +2340,7 @@ private void activateCommunicationControls(boolean activate) {
     private javax.swing.JTextField goalAgentMovementSpeedTextField;
     private javax.swing.JPanel gridPanel;
     private javax.swing.JRadioButton intelligentAIAgentRadioButton;
-    private javax.swing.JRadioButton intelligentHideGoalAgentMovementRadioButton;
-    private javax.swing.JRadioButton intelligentOpenGoalAgentMovementRadioButton;
+    private javax.swing.JRadioButton intelligentGoalAgentMovementRadioButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel lcsParametersPanel;
     private javax.swing.JCheckBox logOutputCheckBox;
@@ -2395,11 +2353,9 @@ private void activateCommunicationControls(boolean activate) {
     private javax.swing.JLabel maxXLabel;
     private javax.swing.JTextField maxXTextField;
     private javax.swing.JTextField maxYTextField;
-    private javax.swing.JRadioButton mazeScenarioRadioButton;
     private javax.swing.JLabel mutationProbabilityLabel;
     private javax.swing.JTextField mutationProbabilityTextField;
     private javax.swing.JRadioButton noExternalRewardRadioButton;
-    private javax.swing.JRadioButton nonTorusScenarioRadioButton;
     private javax.swing.JLabel nuLabel;
     private javax.swing.JTextField nuTextField;
     private javax.swing.JLabel numberOfExperimentsLabel;
@@ -2410,20 +2366,19 @@ private void activateCommunicationControls(boolean activate) {
     private javax.swing.JTextField obstacleConnectionFactorTextField;
     private javax.swing.JLabel obstaclePercentageLabel;
     private javax.swing.JTextField obstaclePercentageTextField;
-    private javax.swing.JRadioButton oldLCSAgentRadioButton;
     private javax.swing.JButton packageButton;
     private javax.swing.JRadioButton pillarScenarioRadioButton;
     private javax.swing.JLabel predictionErrorInitializationLabel;
     private javax.swing.JTextField predictionErrorInitializationTextField;
     private javax.swing.JLabel predictionErrorReductionLabel;
     private javax.swing.JTextField predictionErrorReductionTextField;
+    private javax.swing.JCheckBox predictionInitializationAdaptionCheckBox;
     private javax.swing.JLabel predictionInitializationLabel;
     private javax.swing.JTextField predictionInitializationTextField;
     private javax.swing.JPanel problemDefinitionPanel;
     private javax.swing.JLabel problemsLabel;
     private javax.swing.JRadioButton randomExploreExploitModeRadioButton;
     private javax.swing.JRadioButton randomGoalAgentMovementRadioButton;
-    private javax.swing.JRadioButton randomHideGoalAgentMovementRadioButton;
     private javax.swing.JRadioButton randomScenarioRadioButton;
     private javax.swing.JLabel randomSeedLabel;
     private javax.swing.JTextField randomSeedTextField;
@@ -2432,26 +2387,23 @@ private void activateCommunicationControls(boolean activate) {
     private javax.swing.JScrollPane resultsScrollPane;
     private javax.swing.JTable resultsTable;
     private javax.swing.JRadioButton rewardAllEquallyRadioButton;
-    private javax.swing.JRadioButton rewardComplexRadioButton;
     private javax.swing.JLabel rewardDistanceLabel;
     private javax.swing.JTextField rewardDistanceTextField;
     private javax.swing.JRadioButton rewardEgoisticRadioButton;
     private javax.swing.JPanel rewardModelPanel;
-    private javax.swing.JRadioButton rewardNewRadioButton;
     private javax.swing.JLabel rewardRangeLabel;
     private javax.swing.JRadioButton rewardSimpleRadioButton;
-    private javax.swing.JRadioButton roomScenarioRadioButton;
     private javax.swing.JButton runLastBatchButton;
     private javax.swing.JButton saveAllExplorationButton;
     private javax.swing.JButton saveAllPopulationButton;
     private javax.swing.JButton saveAllRandomButton;
     private javax.swing.JButton saveAllStackButton;
     private javax.swing.JButton saveNewButton;
+    private javax.swing.JButton saveSpeedButton;
+    private javax.swing.JButton saveStepsButton;
     private javax.swing.ButtonGroup scenarioTypeButtonGroup;
     private javax.swing.JTextField sightRangeTextField;
     private javax.swing.JRadioButton simpleAIAgentRadioButton;
-    private javax.swing.JRadioButton singletonSXCSAgentRadioButton;
-    private javax.swing.JRadioButton standardXCSAgentRadioButton;
     private javax.swing.JLabel stepsLabel;
     private javax.swing.JRadioButton switchExploitModeRadioButton;
     private javax.swing.JRadioButton switchExploreModeRadioButton;
