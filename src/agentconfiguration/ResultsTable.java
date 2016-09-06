@@ -27,6 +27,7 @@ public class ResultsTable extends AbstractTableModel
             "Average prediction error",
             "Covered area",
             "Wasted coverage",
+            "Wasted movements",
             "Half goal percentage",
             "Goal percentage"
         }; 
