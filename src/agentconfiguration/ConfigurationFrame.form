@@ -26,13 +26,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="loadSettingsButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="saveSettingsButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="doEvolutionaryAlgorithmCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                      <Component id="gammaLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -43,7 +43,7 @@
                           <Component id="maxStackSizeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="coveringWildcardProbabilityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="numberOfExperimentsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lengthOfEachGArunLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="numberOfStepsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="elitistSelectionSizeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="mutationProbabilityEvoAlgLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="crossoverProbabilityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -53,37 +53,115 @@
                           <Component id="sightDistanceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="epsilon0Label" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="thetaSubsumerLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="numberOfGARunsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="numberOfProblemsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="isEventDrivenCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="maxPopSizeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="doEvolutionaryAlgorithmCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="maxAgentsTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="maxYTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="maxXTextField" alignment="0" pref="35" max="32767" attributes="1"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="maxAgentsTextField" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="maxYTextField" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="maxXTextField" alignment="0" pref="35" max="32767" attributes="1"/>
+                                  <Component id="maxPopSizeTextField" alignment="0" max="32767" attributes="1"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="predictionErrorInitializationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="betaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="predictionInitializationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="predictionInitializationTextField" linkSize="2" alignment="0" min="-2" pref="50" max="-2" attributes="1"/>
+                                          <Component id="betaTextField" linkSize="2" alignment="0" min="-2" pref="50" max="-2" attributes="1"/>
+                                          <Component id="predictionErrorInitializationTextField" linkSize="2" alignment="0" min="-2" pref="50" max="-2" attributes="1"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="fitnessInitializationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="deltaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="thetaDelLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="thetaDelTextField" linkSize="2" alignment="0" min="-2" pref="50" max="-2" attributes="1"/>
+                                          <Component id="deltaTextField" linkSize="2" alignment="0" min="-2" pref="50" max="-2" attributes="1"/>
+                                          <Component id="fitnessInitializationTextField" linkSize="2" alignment="0" min="-2" pref="50" max="-2" attributes="1"/>
+                                          <Component id="gammaTextField" linkSize="2" alignment="0" min="-2" pref="50" max="-2" attributes="1"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="epsilon0TextField" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
-                              <Component id="thetaSubsumerTextField" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
-                              <Component id="rewardUpdateFactorTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="crossoverMutationProbabilityTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="crossoverProbabilityTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="evolutionaryMutationProbabilityTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="elitistSelectionSizeTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="gaRunLengthTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="numberOfExperimentsTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="coveringWildcardProbabilityTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="sightRangeTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="maxStackSizeTextField" alignment="0" max="32767" attributes="1"/>
-                              <Component id="rewardDistanceTextField" alignment="0" pref="34" max="32767" attributes="1"/>
-                              <Component id="numberOfGARunsTextField" alignment="0" max="32767" attributes="1"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="epsilon0TextField" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
+                                  <Component id="thetaSubsumerTextField" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
+                                  <Component id="rewardUpdateFactorTextField" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="crossoverMutationProbabilityTextField" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="crossoverProbabilityTextField" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="evolutionaryMutationProbabilityTextField" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="elitistSelectionSizeTextField" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="numberOfStepsTextField" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="numberOfExperimentsTextField" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="coveringWildcardProbabilityTextField" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="sightRangeTextField" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="maxStackSizeTextField" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="rewardDistanceTextField" alignment="0" pref="34" max="32767" attributes="1"/>
+                                  <Component id="numberOfProblemsTextField" alignment="0" max="32767" attributes="1"/>
+                              </Group>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                      <Component id="alphaLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="alphaTextField" linkSize="2" min="-2" pref="50" max="-2" attributes="1"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="doGASubsumptionCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="nuLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="thetaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="predictionErrorReductionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="fitnessReductionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="mutationProbabilityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="mutationProbabilityTextField" linkSize="2" alignment="0" min="-2" pref="50" max="-2" attributes="1"/>
+                                                  <Component id="fitnessReductionTextField" linkSize="2" alignment="0" min="-2" pref="50" max="-2" attributes="1"/>
+                                                  <Component id="predictionErrorReductionTextField" linkSize="2" alignment="0" min="-2" pref="50" max="-2" attributes="1"/>
+                                                  <Component id="thetaTextField" linkSize="2" alignment="0" min="-2" pref="50" max="-2" attributes="1"/>
+                                                  <Component id="nuTextField" linkSize="2" alignment="0" min="-2" pref="50" max="-2" attributes="1"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="doActionSetSubsumptionCheckBox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="loadSettingsButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="saveSettingsButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="289" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="274" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,68 +169,113 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="maxXLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="maxXTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="maxYLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="maxYTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="maxXLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="maxXTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="betaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="maxYLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="maxYTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="predictionInitializationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="betaTextField" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="predictionInitializationTextField" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="agentCountLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="maxAgentsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="predictionErrorInitializationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="predictionErrorInitializationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="isTorusCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="isEventDrivenCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="maxPopSizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="maxPopSizeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fitnessInitializationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fitnessInitializationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="isTorusCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="deltaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="deltaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="isEventDrivenCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="thetaDelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="thetaDelTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="doEvolutionaryAlgorithmCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gammaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gammaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="rewardDistanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rewardDistanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="rewardDistanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rewardDistanceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="doActionSetSubsumptionCheckBox" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="maxStackSizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="maxStackSizeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="alphaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="alphaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="sightDistanceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="sightRangeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nuLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nuTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="coveringWildcardProbabilityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="coveringWildcardProbabilityTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="thetaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="thetaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="numberOfExperimentsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="numberOfExperimentsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="predictionErrorReductionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="predictionErrorReductionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="numberOfGARunsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="numberOfGARunsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numberOfProblemsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numberOfProblemsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fitnessReductionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fitnessReductionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lengthOfEachGArunLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="gaRunLengthTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numberOfStepsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numberOfStepsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mutationProbabilityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mutationProbabilityTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="elitistSelectionSizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="elitistSelectionSizeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="doGASubsumptionCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -235,9 +358,9 @@
         <Property name="text" type="java.lang.String" value="Number of experiments"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lengthOfEachGArunLabel">
+    <Component class="javax.swing.JLabel" name="numberOfStepsLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Length of each GA run"/>
+        <Property name="text" type="java.lang.String" value="Number of Steps"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="elitistSelectionSizeLabel">
@@ -292,7 +415,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="coveringWildcardProbabilityTextField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0.1"/>
+        <Property name="text" type="java.lang.String" value="0.5"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="numberOfExperimentsTextField">
@@ -300,7 +423,7 @@
         <Property name="text" type="java.lang.String" value="10"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="gaRunLengthTextField">
+    <Component class="javax.swing.JTextField" name="numberOfStepsTextField">
       <Properties>
         <Property name="text" type="java.lang.String" value="20"/>
       </Properties>
@@ -317,7 +440,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="crossoverProbabilityTextField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0.1"/>
+        <Property name="text" type="java.lang.String" value="0.8"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="rewardUpdateFactorTextField">
@@ -332,6 +455,7 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="isTorusCheckBox">
       <Properties>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="is grid Torus?"/>
       </Properties>
     </Component>
@@ -347,6 +471,7 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="doEvolutionaryAlgorithmCheckBox">
       <Properties>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="use evolutionary algorithm?"/>
       </Properties>
     </Component>
@@ -378,27 +503,190 @@
     </Component>
     <Component class="javax.swing.JTextField" name="thetaSubsumerTextField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0.1"/>
+        <Property name="text" type="java.lang.String" value="20"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="epsilon0TextField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0.05"/>
+        <Property name="text" type="java.lang.String" value="10.0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="numberOfGARunsTextField">
+    <Component class="javax.swing.JTextField" name="numberOfProblemsTextField">
       <Properties>
         <Property name="text" type="java.lang.String" value="500"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="numberOfGARunsLabel">
+    <Component class="javax.swing.JLabel" name="numberOfProblemsLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Number of GA runs"/>
+        <Property name="text" type="java.lang.String" value="Number of Problems"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="isEventDrivenCheckBox">
       <Properties>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="is event driven?"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="maxPopSizeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Max Population"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="maxPopSizeTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="800"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="betaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="beta"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="betaTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0.2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="predictionInitializationLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prediction Initialization"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="predictionInitializationTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="10.0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="predictionErrorInitializationLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prediction Error Initialization"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="predictionErrorInitializationTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0.0"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="predictionErrorInitializationTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="fitnessInitializationLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fitness initialization"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="fitnessInitializationTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0.01"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="deltaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Delta"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="deltaTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0.1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="thetaDelLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Theta Del"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="thetaDelTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="20"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="thetaDelTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="gammaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gamma"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="gammaTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0.95"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gammaTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="alphaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Alpha"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="alphaTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0.1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nuLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nu"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nuTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="5.0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="thetaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Theta"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="thetaTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="25.0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="doActionSetSubsumptionCheckBox">
+      <Properties>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="Action Set Subsumption"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="predictionErrorReductionLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prediction Error Reduction"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="predictionErrorReductionTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0.25"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="fitnessReductionLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fitness Reduction"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="fitnessReductionTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0.1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="mutationProbabilityLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mutation probability"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="mutationProbabilityTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0.04"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="doGASubsumptionCheckBox">
+      <Properties>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="GA Subsumption"/>
+        <Property name="actionCommand" type="java.lang.String" value="Do GA Subsumption"/>
       </Properties>
     </Component>
   </SubComponents>
