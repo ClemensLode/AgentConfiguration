@@ -346,16 +346,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
 
             if(randomScenarioRadioButton.isSelected()) {
                 p.println(Configuration.RANDOM_SCENARIO);
-            } else if(mazeScenarioRadioButton.isSelected()) {
-                p.println(Configuration.MAZE_SCENARIO);
-            } else if(nonTorusScenarioRadioButton.isSelected()) {
-                p.println(Configuration.NON_TORUS_SCENARIO);
             } else if(pillarScenarioRadioButton.isSelected()) {
                 p.println(Configuration.PILLAR_SCENARIO);
-            } else if(crossScenarioRadioButton.isSelected()) {
-                p.println(Configuration.CROSS_SCENARIO);
-            } else if(roomScenarioRadioButton.isSelected()) {
-                p.println(Configuration.ROOM_SCENARIO);
             } else if(difficultScenarioRadioButton.isSelected()) {
                 p.println(Configuration.DIFFICULT_SCENARIO);
             }
@@ -404,8 +396,12 @@ public class ConfigurationFrame extends javax.swing.JFrame {
 
             if (alwaysExploreModeRadioButton.isSelected()) {
                 p.println(Configuration.ALWAYS_EXPLORE_MODE);
+            } else if (alwaysExploreRandomModeRadioButton.isSelected()) {
+                p.println(Configuration.ALWAYS_EXPLORE_RANDOM_MODE);
             } else if (alwaysExploitModeRadioButton.isSelected()) {
                 p.println(Configuration.ALWAYS_EXPLOIT_MODE);
+            } else if (alwaysExploitBestModeRadioButton.isSelected()) {
+                p.println(Configuration.ALWAYS_EXPLOIT_BEST_MODE);
             } else if (switchExploitModeRadioButton.isSelected()) {
                 p.println(Configuration.SWITCH_EXPLORATION_START_EXPLOIT_MODE);
             } else if(switchExploreModeRadioButton.isSelected()) {
@@ -448,12 +444,6 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 p.println(Configuration.NO_EXTERNAL_REWARD);
             } else if (rewardAllEquallyRadioButton.isSelected()) {
                 p.println(Configuration.REWARD_ALL_EQUALLY);
-            } else if (rewardSimpleRadioButton.isSelected()) {
-                p.println(Configuration.REWARD_SIMPLE);
-            } else if (rewardComplexRadioButton.isSelected()) {
-                p.println(Configuration.REWARD_COMPLEX);
-            } else if(rewardNewRadioButton.isSelected()) {
-                p.println(Configuration.REWARD_NEW);
             } else if(rewardEgoisticRadioButton.isSelected()) {
                 p.println(Configuration.REWARD_EGOISM);
             }
@@ -490,20 +480,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             case Configuration.RANDOM_SCENARIO:
                 scenarioTypeButtonGroup.setSelected(randomScenarioRadioButton.getModel(), true);
                 break;
-            case Configuration.MAZE_SCENARIO:
-                scenarioTypeButtonGroup.setSelected(mazeScenarioRadioButton.getModel(), true);
-                break;
-            case Configuration.NON_TORUS_SCENARIO:
-                scenarioTypeButtonGroup.setSelected(nonTorusScenarioRadioButton.getModel(), true);
-                break;
             case Configuration.PILLAR_SCENARIO:
                 scenarioTypeButtonGroup.setSelected(pillarScenarioRadioButton.getModel(), true);
-            break;
-            case Configuration.CROSS_SCENARIO:
-                scenarioTypeButtonGroup.setSelected(crossScenarioRadioButton.getModel(), true);
-            break;
-            case Configuration.ROOM_SCENARIO:
-                scenarioTypeButtonGroup.setSelected(roomScenarioRadioButton.getModel(), true);
             break;
             case Configuration.DIFFICULT_SCENARIO:
                 scenarioTypeButtonGroup.setSelected(difficultScenarioRadioButton.getModel(), true);
@@ -557,8 +535,14 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             case Configuration.ALWAYS_EXPLORE_MODE:
                 explorationModeButtonGroup.setSelected(alwaysExploreModeRadioButton.getModel(), true);
                 break;
+            case Configuration.ALWAYS_EXPLORE_RANDOM_MODE:
+                explorationModeButtonGroup.setSelected(alwaysExploreRandomModeRadioButton.getModel(), true);
+                break;
             case Configuration.ALWAYS_EXPLOIT_MODE:
                 explorationModeButtonGroup.setSelected(alwaysExploitModeRadioButton.getModel(), true);
+                break;
+            case Configuration.ALWAYS_EXPLOIT_BEST_MODE:
+                explorationModeButtonGroup.setSelected(alwaysExploitBestModeRadioButton.getModel(), true);
                 break;
             case Configuration.SWITCH_EXPLORATION_START_EXPLORE_MODE:
                 explorationModeButtonGroup.setSelected(switchExploreModeRadioButton.getModel(), true);
@@ -629,15 +613,6 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             case Configuration.REWARD_ALL_EQUALLY:
                 externalRewardButtonGroup.setSelected(rewardAllEquallyRadioButton.getModel(), true);
                 break;
-            case Configuration.REWARD_SIMPLE:
-                externalRewardButtonGroup.setSelected(rewardSimpleRadioButton.getModel(), true);
-                break;
-            case Configuration.REWARD_COMPLEX:
-                externalRewardButtonGroup.setSelected(rewardComplexRadioButton.getModel(), true);
-                break;
-            case Configuration.REWARD_NEW:
-                externalRewardButtonGroup.setSelected(rewardNewRadioButton.getModel(), true);
-                break;
             case Configuration.REWARD_EGOISM:
                 externalRewardButtonGroup.setSelected(rewardEgoisticRadioButton.getModel(), true);
                 break;
@@ -645,7 +620,6 @@ public class ConfigurationFrame extends javax.swing.JFrame {
     }
 
 
-    // TODO: Dateien die von einem früheren Start übernommen wurden, werden nicht in die plot file integriert
     public void createAllPlotFile() {
         String entry = new String("");
         int number_steps = Integer.valueOf(numberOfStepsTextField.getText());
@@ -849,7 +823,6 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         communicationPanel = new javax.swing.JPanel();
         noExternalRewardRadioButton = new javax.swing.JRadioButton();
         rewardAllEquallyRadioButton = new javax.swing.JRadioButton();
-        rewardSimpleRadioButton = new javax.swing.JRadioButton();
         rewardEgoisticRadioButton = new javax.swing.JRadioButton();
         explorationModePanel = new javax.swing.JPanel();
         alwaysExploreModeRadioButton = new javax.swing.JRadioButton();
@@ -857,6 +830,8 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         switchExploitModeRadioButton = new javax.swing.JRadioButton();
         randomExploreExploitModeRadioButton = new javax.swing.JRadioButton();
         switchExploreModeRadioButton = new javax.swing.JRadioButton();
+        alwaysExploreRandomModeRadioButton = new javax.swing.JRadioButton();
+        alwaysExploitBestModeRadioButton = new javax.swing.JRadioButton();
         logOutputCheckBox = new javax.swing.JCheckBox();
         createAnimatedGIFCheckBox = new javax.swing.JCheckBox();
         saveSpeedButton = new javax.swing.JButton();
@@ -866,7 +841,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         setTitle("Agent Configuration File Editor v1.00");
         setResizable(false);
 
-        saveNewButton.setFont(new java.awt.Font("Tahoma", 1, 11));
+        saveNewButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         saveNewButton.setText("Save");
         saveNewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -938,7 +913,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(obstaclePercentageLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(obstaclePercentageTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                        .addComponent(obstaclePercentageTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gridPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(obstacleConnectionFactorLabel)
@@ -954,7 +929,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                         .addGroup(gridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rewardDistanceLabel)
                             .addComponent(rewardRangeLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addGroup(gridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(rewardDistanceTextField)
                             .addComponent(sightRangeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)))
@@ -1044,7 +1019,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                                     .addComponent(randomSeedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(numberOfExperimentsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(numberOfStepsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         testsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {maxAgentsTextField, numberOfExperimentsTextField, numberOfProblemsTextField, numberOfStepsTextField, randomSeedTextField});
@@ -1117,7 +1092,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             .addGroup(goalAgentMovementPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(goalAgentMovementSpeedLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(goalAgentMovementSpeedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
             .addGroup(goalAgentMovementPanelLayout.createSequentialGroup()
@@ -1154,12 +1129,9 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         problemDefinitionPanel.setLayout(problemDefinitionPanelLayout);
         problemDefinitionPanelLayout.setHorizontalGroup(
             problemDefinitionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(problemDefinitionPanelLayout.createSequentialGroup()
-                .addGroup(problemDefinitionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(testsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goalAgentMovementPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(goalAgentMovementPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(testsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         problemDefinitionPanelLayout.setVerticalGroup(
             problemDefinitionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1169,7 +1141,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addComponent(gridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(goalAgentMovementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
+                .addContainerGap())
         );
 
         lcsParametersPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LCS parameters", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -1384,8 +1356,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fitnessAndPredictionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(betaLabel)
-                    .addComponent(betaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(betaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         classifierSubsumptionAndDeletionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Classifier subsumption and deletion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -1505,10 +1476,11 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         lcsParametersPanelLayout.setHorizontalGroup(
             lcsParametersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lcsParametersPanelLayout.createSequentialGroup()
-                .addGroup(lcsParametersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(lcsParametersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fitnessAndPredictionPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gaParametersPanel, javax.swing.GroupLayout.Alignment.LEADING, 0, 213, Short.MAX_VALUE)
-                    .addComponent(classifierSubsumptionAndDeletionPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, lcsParametersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(gaParametersPanel, javax.swing.GroupLayout.Alignment.LEADING, 0, 213, Short.MAX_VALUE)
+                        .addComponent(classifierSubsumptionAndDeletionPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         lcsParametersPanelLayout.setVerticalGroup(
@@ -1518,10 +1490,10 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(gaParametersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fitnessAndPredictionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
+                .addComponent(fitnessAndPredictionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        packageButton.setFont(new java.awt.Font("Tahoma", 1, 11));
+        packageButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         packageButton.setText("Package");
         packageButton.setEnabled(false);
         packageButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1728,10 +1700,6 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         rewardAllEquallyRadioButton.setText("Reward all equally");
         rewardAllEquallyRadioButton.setActionCommand("all equally");
 
-        externalRewardButtonGroup.add(rewardSimpleRadioButton);
-        rewardSimpleRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
-        rewardSimpleRadioButton.setText("Simple relation");
-
         externalRewardButtonGroup.add(rewardEgoisticRadioButton);
         rewardEgoisticRadioButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         rewardEgoisticRadioButton.setText("Egoistic relation");
@@ -1744,7 +1712,6 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addGroup(communicationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(noExternalRewardRadioButton)
                     .addComponent(rewardAllEquallyRadioButton)
-                    .addComponent(rewardSimpleRadioButton)
                     .addComponent(rewardEgoisticRadioButton))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
@@ -1754,8 +1721,6 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addComponent(noExternalRewardRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rewardAllEquallyRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rewardSimpleRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rewardEgoisticRadioButton))
         );
@@ -1788,6 +1753,19 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         switchExploreModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
         switchExploreModeRadioButton.setText("Switch (explore)");
 
+        explorationModeButtonGroup.add(alwaysExploreRandomModeRadioButton);
+        alwaysExploreRandomModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
+        alwaysExploreRandomModeRadioButton.setText("Always explore (random)");
+        alwaysExploreRandomModeRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alwaysExploreRandomModeRadioButtonActionPerformed(evt);
+            }
+        });
+
+        explorationModeButtonGroup.add(alwaysExploitBestModeRadioButton);
+        alwaysExploitBestModeRadioButton.setFont(new java.awt.Font("Arial", 0, 12));
+        alwaysExploitBestModeRadioButton.setText("Always exploit (best)");
+
         javax.swing.GroupLayout explorationModePanelLayout = new javax.swing.GroupLayout(explorationModePanel);
         explorationModePanel.setLayout(explorationModePanelLayout);
         explorationModePanelLayout.setHorizontalGroup(
@@ -1798,15 +1776,21 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                     .addComponent(alwaysExploitModeRadioButton)
                     .addComponent(randomExploreExploitModeRadioButton)
                     .addComponent(switchExploreModeRadioButton)
-                    .addComponent(switchExploitModeRadioButton))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(switchExploitModeRadioButton)
+                    .addComponent(alwaysExploreRandomModeRadioButton)
+                    .addComponent(alwaysExploitBestModeRadioButton))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         explorationModePanelLayout.setVerticalGroup(
             explorationModePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(explorationModePanelLayout.createSequentialGroup()
                 .addComponent(alwaysExploreModeRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(alwaysExploreRandomModeRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(alwaysExploitModeRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(alwaysExploitBestModeRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(switchExploreModeRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1819,12 +1803,12 @@ public class ConfigurationFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(communicationPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(agentTypePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rewardModelPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(explorationModePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(agentTypePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rewardModelPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(explorationModePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(communicationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -1863,45 +1847,44 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(problemDefinitionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(problemDefinitionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
+                                .addComponent(logOutputCheckBox)
+                                .addGap(36, 36, 36)
                                 .addComponent(createAnimatedGIFCheckBox))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(saveNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(packageButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(runLastBatchButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(updateDatabaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(logOutputCheckBox))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lcsParametersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(saveSpeedButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(saveAllRandomButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(saveAllExplorationButton))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(saveNewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(packageButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(runLastBatchButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(updateDatabaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(saveSpeedButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(saveAllRandomButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(saveAllExplorationButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(saveAllStackButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(saveAllPopulationButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteButton)
-                        .addGap(7, 7, 7))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(saveStepsButton)
-                        .addGap(490, 490, 490)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lcsParametersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(resultsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 835, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1909,35 +1892,33 @@ public class ConfigurationFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(problemDefinitionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(problemDefinitionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(saveNewButton)
+                                    .addComponent(packageButton)
+                                    .addComponent(runLastBatchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(updateDatabaseButton)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(logOutputCheckBox)
-                                .addGap(23, 23, 23)
-                                .addComponent(createAnimatedGIFCheckBox)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(saveNewButton)
-                                    .addComponent(packageButton))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(runLastBatchButton)
-                                    .addComponent(updateDatabaseButton)))
-                            .addComponent(lcsParametersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(saveSpeedButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(saveStepsButton))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(deleteButton)
-                                .addComponent(saveAllPopulationButton)
-                                .addComponent(saveAllStackButton)
-                                .addComponent(saveAllExplorationButton)
-                                .addComponent(saveAllRandomButton))))
-                    .addComponent(resultsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE))
+                                    .addComponent(createAnimatedGIFCheckBox)
+                                    .addComponent(logOutputCheckBox))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(saveSpeedButton)
+                            .addComponent(saveAllRandomButton)
+                            .addComponent(saveAllExplorationButton))
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(saveAllStackButton)
+                            .addComponent(saveAllPopulationButton)
+                            .addComponent(saveStepsButton)
+                            .addComponent(deleteButton)))
+                    .addComponent(resultsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
+                    .addComponent(lcsParametersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -2100,7 +2081,7 @@ private void saveAllRandomButtonActionPerformed(java.awt.event.ActionEvent evt) 
     this.saveSettings("default.txt");
     String orig_obstacle_percentage = obstaclePercentageTextField.getText();
     String orig_obstacle_con = obstacleConnectionFactorTextField.getText();
-    for(int k = 0; k < 7; k++) {
+    for(int k = 0; k < 3; k++) {
         switch(k) {
             case 0:{
                 scenarioTypeButtonGroup.setSelected(randomScenarioRadioButton.getModel(), true);
@@ -2126,27 +2107,10 @@ private void saveAllRandomButtonActionPerformed(java.awt.event.ActionEvent evt) 
                 }
             }break;
             case 1:{
-                scenarioTypeButtonGroup.setSelected(mazeScenarioRadioButton.getModel(), true);
-                
-                saveScenario();
-            }break;
-            case 2:{
-                scenarioTypeButtonGroup.setSelected(nonTorusScenarioRadioButton.getModel(), true);
-                saveScenario();
-            }break;
-            case 3:{
                 scenarioTypeButtonGroup.setSelected(pillarScenarioRadioButton.getModel(), true);
                 saveScenario();
             }break;
-            case 4:{
-                scenarioTypeButtonGroup.setSelected(crossScenarioRadioButton.getModel(), true);
-                saveScenario();
-            }break;
-            case 5:{
-                scenarioTypeButtonGroup.setSelected(roomScenarioRadioButton.getModel(), true);
-                saveScenario();
-            }break;
-            case 6:{
+            case 2:{
                 scenarioTypeButtonGroup.setSelected(difficultScenarioRadioButton.getModel(), true);
                 saveScenario();
             }break;
@@ -2186,13 +2150,15 @@ private void saveAllExplorationButtonActionPerformed(java.awt.event.ActionEvent 
     this.saveSettings("default.txt");
     ButtonModel old_model = explorationModeButtonGroup.getSelection();
 
-    for(int i = 0; i < 6; i++) {
+    for(int i = 0; i < 7; i++) {
         switch(i) {
             case 0:explorationModeButtonGroup.setSelected(alwaysExploreModeRadioButton.getModel(), true);break;
-            case 1:explorationModeButtonGroup.setSelected(alwaysExploitModeRadioButton.getModel(), true);break;
-            case 2:explorationModeButtonGroup.setSelected(switchExploreModeRadioButton.getModel(), true);break;
-            case 3:explorationModeButtonGroup.setSelected(switchExploitModeRadioButton.getModel(), true);break;
-            case 4:explorationModeButtonGroup.setSelected(randomExploreExploitModeRadioButton.getModel(), true);break;
+            case 1:explorationModeButtonGroup.setSelected(alwaysExploreRandomModeRadioButton.getModel(), true);break;
+            case 2:explorationModeButtonGroup.setSelected(alwaysExploitModeRadioButton.getModel(), true);break;
+            case 3:explorationModeButtonGroup.setSelected(alwaysExploitBestModeRadioButton.getModel(), true);break;
+            case 4:explorationModeButtonGroup.setSelected(switchExploreModeRadioButton.getModel(), true);break;
+            case 5:explorationModeButtonGroup.setSelected(switchExploitModeRadioButton.getModel(), true);break;
+            case 6:explorationModeButtonGroup.setSelected(randomExploreExploitModeRadioButton.getModel(), true);break;
         }
         String id = new String(timeString + "-" + conf_id);
         this.saveSettings("config-" + id + ".txt");
@@ -2262,6 +2228,10 @@ private void saveStepsButtonActionPerformed(java.awt.event.ActionEvent evt) {//G
     packageButton.setEnabled(true);
 }//GEN-LAST:event_saveStepsButtonActionPerformed
 
+private void alwaysExploreRandomModeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alwaysExploreRandomModeRadioButtonActionPerformed
+    // TODO add your handling code here:
+}//GEN-LAST:event_alwaysExploreRandomModeRadioButtonActionPerformed
+
 private void activateCommunicationControls(boolean activate) {
     for (Enumeration<AbstractButton> e = externalRewardButtonGroup.getElements() ; e.hasMoreElements() ;) {
         e.nextElement().setEnabled(activate);
@@ -2303,8 +2273,10 @@ private void activateCommunicationControls(boolean activate) {
     private javax.swing.JPanel agentTypePanel;
     private javax.swing.JLabel alphaLabel;
     private javax.swing.JTextField alphaTextField;
+    private javax.swing.JRadioButton alwaysExploitBestModeRadioButton;
     private javax.swing.JRadioButton alwaysExploitModeRadioButton;
     private javax.swing.JRadioButton alwaysExploreModeRadioButton;
+    private javax.swing.JRadioButton alwaysExploreRandomModeRadioButton;
     private javax.swing.JRadioButton alwaysInTheSameDirectionGoalAgentMovementRadioButton;
     private javax.swing.JLabel betaLabel;
     private javax.swing.JTextField betaTextField;
@@ -2392,7 +2364,6 @@ private void activateCommunicationControls(boolean activate) {
     private javax.swing.JRadioButton rewardEgoisticRadioButton;
     private javax.swing.JPanel rewardModelPanel;
     private javax.swing.JLabel rewardRangeLabel;
-    private javax.swing.JRadioButton rewardSimpleRadioButton;
     private javax.swing.JButton runLastBatchButton;
     private javax.swing.JButton saveAllExplorationButton;
     private javax.swing.JButton saveAllPopulationButton;
